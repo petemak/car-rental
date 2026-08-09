@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Rwanda Roadways</title>
+  <meta name="description" content="Get in touch with Rwanda Roadways — phone, WhatsApp, email, or send us a message." />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container site-header__bar">
+      <a class="site-header__logo" href="index.html">Rwanda <span>Roadways</span></a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a href="fleet.html">Fleet</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__actions">
+        <a class="account-link" href="account/login.html" data-account-link data-account-href-loggedin="account/bookings.html">Login</a>
+        <a class="btn btn-primary btn-sm" href="fleet.html">Book Now</a>
+        <button type="button" class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav">
+          <span class="visually-hidden">Menu</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav id="mobile-nav" class="mobile-nav" data-mobile-nav aria-label="Mobile">
+      <ul class="mobile-nav__list">
+        <li><a href="fleet.html">Fleet</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="account/login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="section--tight">
+      <div class="container">
+        <p class="eyebrow">Get in touch</p>
+        <h1>We're a real, local team — reach us any way that's easy for you</h1>
+        <p>We typically respond within a few hours during Kigali business hours (East Africa Time, UTC+2).</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container two-col">
+        <div>
+          <h2>Send us a message</h2>
+          <form id="contact-form" class="form-grid" novalidate>
+            <div class="field">
+              <label for="contact-name">Name</label>
+              <input type="text" id="contact-name" name="name" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="contact-email">Email</label>
+              <input type="email" id="contact-email" name="email" autocomplete="email" required />
+            </div>
+            <div class="field">
+              <label for="contact-subject">Subject</label>
+              <input type="text" id="contact-subject" name="subject" required />
+            </div>
+            <div class="field">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" id="contact-submit">Send message</button>
+            <div id="contact-result" role="status"></div>
+          </form>
+        </div>
+        <div>
+          <h2>Direct contact</h2>
+          <ul class="icon-list" style="flex-direction:column;gap:var(--space-3);">
+            <li>📞 <a href="tel:+250788000000">+250 788 000 000</a></li>
+            <li>💬 <a href="https://wa.me/250788000000">WhatsApp us</a></li>
+            <li>✉️ <a href="mailto:hello@rwandaroadways.com">hello@rwandaroadways.com</a></li>
+            <li>📍 KN 4 Ave, Kigali, Rwanda</li>
+          </ul>
+          <h3>Office location</h3>
+          <iframe title="Map showing our Kigali office location" src="https://www.openstreetmap.org/export/embed.html?bbox=30.05%2C-1.96%2C30.11%2C-1.92&layer=mapnik" style="border:1px solid var(--color-border);border-radius:var(--radius-md);width:100%;height:280px;" loading="lazy"></iframe>
+          <p class="hint" style="margin-top:var(--space-3);">Questions about a specific booking? See our <a href="faq.html">FAQ</a> first — many answers are instant there.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h2>Rwanda Roadways</h2>
+        <p>Affordable premier car rental for tourists exploring Rwanda — self-drive or chauffeured, from Kigali International Airport to the trailhead.</p>
+        <form data-newsletter-form>
+          <label for="newsletter-email">Get trip tips &amp; offers</label>
+          <div class="phone-input">
+            <input type="email" id="newsletter-email" name="email" placeholder="you@example.com" required />
+            <button type="submit" class="btn btn-primary btn-sm">Subscribe</button>
+          </div>
+        </form>
+        <p class="footer-locality">Kigali, Rwanda</p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <ul>
+          <li><a href="fleet.html">Fleet</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="about.html">About / Our Standards</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Account</h2>
+        <ul>
+          <li><a href="account/login.html">Login / Register</a></li>
+          <li><a href="account/bookings.html">My Bookings</a></li>
+          <li><a href="contact.html">Contact Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="tel:+250788000000">+250 788 000 000</a></li>
+          <li><a href="https://wa.me/250788000000">WhatsApp us</a></li>
+          <li><a href="mailto:hello@rwandaroadways.com">hello@rwandaroadways.com</a></li>
+          <li>KN 4 Ave, Kigali, Rwanda</li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Rwanda Roadways. All rights reserved.</p>
+      <ul class="footer-bottom__legal">
+        <li><a href="legal/terms.html">Terms of Service</a></li>
+        <li><a href="legal/privacy.html">Privacy Policy</a></li>
+        <li><a href="legal/cancellation-policy.html">Cancellation &amp; Refund Policy</a></li>
+        <li><a href="legal/driver-requirements.html">Driver Requirements &amp; Insurance</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/data/mock-data.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/format.js"></script>
+  <script src="js/components/toast.js"></script>
+  <script src="js/components/nav.js"></script>
+  <script src="js/components/footer.js"></script>
+  <script src="js/pages/contact.js"></script>
+</body>
+</html>

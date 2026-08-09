@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="page-title">Add Vehicle | Rwanda Roadways Admin</title>
+  <meta name="description" content="Add or edit a fleet vehicle, its photos, and its availability." />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/admin.css" />
+</head>
+<body class="admin-body">
+  <div class="admin-topbar">
+    <button type="button" class="nav-toggle" id="sidebar-toggle" aria-label="Toggle menu" style="border-color:rgba(255,255,255,.5);">☰</button>
+    <a class="admin-topbar__brand" href="dashboard.html">Rwanda Roadways <span style="opacity:.7;font-weight:400;">Admin</span></a>
+    <div class="admin-topbar__user">
+      <span id="admin-user-name">Staff</span>
+      <button type="button" class="btn btn-outline-light btn-sm" id="admin-logout-btn">Log out</button>
+    </div>
+  </div>
+
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="admin-sidebar" aria-label="Admin navigation">
+      <ul class="admin-nav">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="fleet.html" aria-current="page">Fleet</a></li>
+        <li><a href="bookings.html">Bookings</a></li>
+        <li><a href="customers.html">Customers</a></li>
+        <li data-role-restricted><a href="pricing.html">Pricing</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="content.html">Content</a></li>
+        <li data-role-restricted><a href="users.html">Admin Users</a></li>
+        <li data-role-restricted><a href="settings.html">Settings</a></li>
+      </ul>
+    </aside>
+
+    <div class="admin-main">
+      <div class="admin-header">
+        <div>
+          <h1 id="form-heading">Add vehicle</h1>
+          <p>Fields map directly to the vehicle object in <code>POST/PATCH /admin/vehicles</code>.</p>
+        </div>
+        <a class="btn btn-outline btn-sm" href="fleet.html">Back to fleet list</a>
+      </div>
+
+      <div class="admin-panel">
+        <h2>Vehicle details</h2>
+        <form id="vehicle-form" class="form-grid">
+          <div class="form-row form-row--2">
+            <div class="field">
+              <label for="v-name">Name</label>
+              <input type="text" id="v-name" name="name" required />
+            </div>
+            <div class="field">
+              <label for="v-category">Category</label>
+              <select id="v-category" name="category_id" required></select>
+            </div>
+          </div>
+          <div class="form-row form-row--3">
+            <div class="field">
+              <label for="v-seats">Seats</label>
+              <input type="number" id="v-seats" name="seats" min="1" required />
+            </div>
+            <div class="field">
+              <label for="v-transmission">Transmission</label>
+              <select id="v-transmission" name="transmission">
+                <option value="automatic">Automatic</option>
+                <option value="manual">Manual</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="v-fuel">Fuel type</label>
+              <select id="v-fuel" name="fuel_type">
+                <option value="petrol">Petrol</option>
+                <option value="diesel">Diesel</option>
+                <option value="hybrid">Hybrid</option>
+                <option value="electric">Electric</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row form-row--2">
+            <div class="field">
+              <label for="v-price">Base price / day (USD)</label>
+              <input type="number" id="v-price" name="price_per_day" min="0" step="0.01" required />
+            </div>
+            <div class="field">
+              <label for="v-status">Status</label>
+              <select id="v-status" name="status">
+                <option value="active">Active</option>
+                <option value="maintenance">Maintenance</option>
+                <option value="retired">Retired</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="v-thumbnail">Thumbnail image URL</label>
+            <input type="url" id="v-thumbnail" name="thumbnail_url" placeholder="https://…" />
+            <p class="hint">Shown on Fleet/Home cards before any gallery photos are uploaded below.</p>
+          </div>
+          <div class="field">
+            <label for="v-features">Features (comma-separated)</label>
+            <input type="text" id="v-features" name="features" placeholder="4x4, Air conditioning, Bluetooth" />
+          </div>
+          <div class="form-row form-row--2">
+            <div class="field-inline">
+              <input type="checkbox" id="v-chauffeur" name="chauffeur_available" />
+              <label for="v-chauffeur">Chauffeur available</label>
+            </div>
+            <div class="field-inline">
+              <input type="checkbox" id="v-airport" name="airport_pickup_available" />
+              <label for="v-airport">Airport pickup available</label>
+            </div>
+          </div>
+
+          <h3>Specs</h3>
+          <p class="hint">Shown on the public Vehicle Detail specs grid — leave blank only if genuinely unknown; Vehicle Detail displays "Not specified" for anything missing.</p>
+          <div class="form-row form-row--3">
+            <div class="field">
+              <label for="v-doors">Doors</label>
+              <input type="number" id="v-doors" name="specs_doors" min="0" />
+            </div>
+            <div class="field">
+              <label for="v-luggage">Luggage capacity (L)</label>
+              <input type="number" id="v-luggage" name="specs_luggage_capacity_l" min="0" />
+            </div>
+          </div>
+          <div class="form-row form-row--2">
+            <div class="field-inline">
+              <input type="checkbox" id="v-ac" name="specs_air_conditioning" />
+              <label for="v-ac">Air conditioning</label>
+            </div>
+            <div class="field-inline">
+              <input type="checkbox" id="v-offroad" name="specs_off_road_capable" />
+              <label for="v-offroad">4x4 / off-road capable</label>
+            </div>
+          </div>
+
+          <h3>Policies</h3>
+          <p class="hint">Stated plainly to customers on Vehicle Detail per the brand's "trustworthy" voice — mileage, fuel, age, license, deposit, cancellation.</p>
+          <div class="form-row form-row--2">
+            <div class="field">
+              <label for="v-mileage">Mileage limit (km/day)</label>
+              <input type="number" id="v-mileage" name="policies_mileage_limit_km_per_day" min="0" />
+            </div>
+            <div class="field">
+              <label for="v-fuel-policy">Fuel policy</label>
+              <select id="v-fuel-policy" name="policies_fuel_policy">
+                <option value="full-to-full">Full-to-full</option>
+                <option value="full-to-empty">Full-to-empty</option>
+                <option value="same-to-same">Same-to-same</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row form-row--2">
+            <div class="field">
+              <label for="v-min-age">Minimum driver age</label>
+              <input type="number" id="v-min-age" name="policies_min_driver_age" min="18" />
+            </div>
+            <div class="field">
+              <label for="v-deposit">Security deposit (USD)</label>
+              <input type="number" id="v-deposit" name="policies_security_deposit_amount" min="0" step="0.01" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="v-license-req">License requirement</label>
+            <input type="text" id="v-license-req" name="policies_license_requirement" placeholder="Valid driver's license or IDP, held 1+ years" />
+          </div>
+          <div class="field">
+            <label for="v-cancellation">Cancellation policy summary</label>
+            <input type="text" id="v-cancellation" name="policies_cancellation_policy_summary" placeholder="Full refund up to 72h before pickup." />
+          </div>
+
+          <button type="submit" class="btn btn-primary">Save vehicle</button>
+          <p id="form-result" role="status"></p>
+        </form>
+      </div>
+
+      <div class="admin-panel" id="photos-panel" hidden>
+        <h2>Photos</h2>
+        <div class="lightbox__thumbs" id="photo-thumbs" style="margin-bottom:var(--space-4);"></div>
+        <div class="field">
+          <label for="photo-upload">Upload a photo</label>
+          <input type="file" id="photo-upload" accept="image/*" />
+        </div>
+      </div>
+
+      <div class="admin-panel" id="availability" hidden>
+        <h2>Availability</h2>
+        <div class="calendar-legend">
+          <span><i style="background:var(--color-error);"></i> Booked</span>
+          <span><i style="background:var(--color-warning);"></i> Blocked (maintenance)</span>
+        </div>
+        <h3>Booked date ranges</h3>
+        <ul class="block-list" id="booked-ranges"></ul>
+        <h3>Blocked date ranges</h3>
+        <ul class="block-list" id="blocked-ranges"></ul>
+        <form id="block-dates-form" class="form-row form-row--3" style="margin-top:var(--space-4);">
+          <div class="field">
+            <label for="block-start">Start date</label>
+            <input type="date" id="block-start" name="start_date" required />
+          </div>
+          <div class="field">
+            <label for="block-end">End date</label>
+            <input type="date" id="block-end" name="end_date" required />
+          </div>
+          <div class="field">
+            <label for="block-reason">Reason</label>
+            <input type="text" id="block-reason" name="reason" placeholder="Scheduled maintenance" />
+          </div>
+          <button type="submit" class="btn btn-outline">Block dates</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/data/mock-data.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/format.js"></script>
+  <script src="../js/components/toast.js"></script>
+  <script src="../js/components/admin-shell.js"></script>
+  <script src="../js/pages/admin-fleet-form.js"></script>
+</body>
+</html>

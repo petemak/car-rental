@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Booking Detail | Rwanda Roadways</title>
+  <meta name="description" content="View and manage your booking — cancel, contact support, or download your confirmation." />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container site-header__bar">
+      <a class="site-header__logo" href="../index.html">Rwanda <span>Roadways</span></a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a href="../fleet.html">Fleet</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__actions">
+        <a class="btn btn-primary btn-sm" href="../fleet.html">Book Now</a>
+        <button type="button" class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav">
+          <span class="visually-hidden">Menu</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav id="mobile-nav" class="mobile-nav" data-mobile-nav aria-label="Mobile">
+      <ul class="mobile-nav__list">
+        <li><a href="../fleet.html">Fleet</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <div class="container section">
+      <div id="lookup-form-wrap">
+        <h1>Look up a booking</h1>
+        <p>Enter your booking reference and the email used at checkout.</p>
+        <form id="detail-lookup-form" class="form-row form-row--2" style="max-width:40rem;">
+          <div class="field">
+            <label for="ref-input">Booking reference</label>
+            <input type="text" id="ref-input" placeholder="RR-9001" required />
+          </div>
+          <div class="field">
+            <label for="email-input">Email</label>
+            <input type="email" id="email-input" required />
+          </div>
+          <button type="submit" class="btn btn-primary" style="align-self:end;">Find booking</button>
+        </form>
+      </div>
+
+      <div id="booking-detail-content" hidden></div>
+    </div>
+  </main>
+
+  <div class="modal-backdrop" id="cancel-modal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="cancel-modal-title">
+      <button type="button" class="modal__close" data-modal-close aria-label="Close">&times;</button>
+      <h2 id="cancel-modal-title">Cancel this booking?</h2>
+      <p>Your refund amount depends on our Cancellation &amp; Refund Policy and how close to pickup you are.</p>
+      <div class="field">
+        <label for="cancel-reason">Reason (optional)</label>
+        <textarea id="cancel-reason"></textarea>
+      </div>
+      <div style="display:flex;gap:var(--space-3);margin-top:var(--space-4);">
+        <button type="button" class="btn btn-outline" data-modal-close>Never mind</button>
+        <button type="button" class="btn btn-danger" id="confirm-cancel-btn">Cancel booking</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Rwanda Roadways. All rights reserved.</p>
+      <ul class="footer-bottom__legal">
+        <li><a href="../legal/terms.html">Terms of Service</a></li>
+        <li><a href="../legal/cancellation-policy.html">Cancellation &amp; Refund Policy</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/data/mock-data.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/format.js"></script>
+  <script src="../js/components/toast.js"></script>
+  <script src="../js/components/modal.js"></script>
+  <script src="../js/components/nav.js"></script>
+  <script src="../js/components/review-submit.js"></script>
+  <script src="../js/pages/account-booking-detail.js"></script>
+</body>
+</html>

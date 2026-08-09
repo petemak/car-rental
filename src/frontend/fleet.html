@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fleet — Browse Rental Cars &amp; Land Cruisers | Rwanda Roadways</title>
+  <meta name="description" content="Filter and compare our full fleet — city cars, sedans, SUVs and off-road Land Cruisers — by dates, category, transmission and price." />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container site-header__bar">
+      <a class="site-header__logo" href="index.html">Rwanda <span>Roadways</span></a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a href="fleet.html" aria-current="page">Fleet</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__actions">
+        <label class="visually-hidden" for="currency-select">Currency</label>
+        <select id="currency-select" class="currency-select" data-currency-select>
+          <option value="USD">USD $</option>
+          <option value="EUR">EUR €</option>
+          <option value="GBP">GBP £</option>
+          <option value="RWF">RWF</option>
+        </select>
+        <a class="account-link" href="account/login.html" data-account-link data-account-href-loggedin="account/bookings.html">Login</a>
+        <a class="btn btn-primary btn-sm" href="fleet.html">Book Now</a>
+        <button type="button" class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav">
+          <span class="visually-hidden">Menu</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav id="mobile-nav" class="mobile-nav" data-mobile-nav aria-label="Mobile">
+      <ul class="mobile-nav__list">
+        <li><a href="fleet.html">Fleet</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="account/login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <form class="search-widget search-widget--sticky" id="fleet-search-form" aria-label="Edit search">
+    <div class="container">
+      <div class="search-widget__toggle" role="radiogroup" aria-label="Service type">
+        <input type="radio" id="svc-self" name="service_type" value="self_drive" checked />
+        <label class="btn btn-outline" for="svc-self" style="flex:1;text-align:center;">Self-Drive</label>
+        <input type="radio" id="svc-chauffeur" name="service_type" value="chauffeur" />
+        <label class="btn btn-outline" for="svc-chauffeur" style="flex:1;text-align:center;">Chauffeur</label>
+      </div>
+      <div class="search-widget__grid">
+        <div class="field">
+          <label for="pickup-location">Pickup location</label>
+          <select id="pickup-location" name="pickup_location_id">
+            <option value="">Any location</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="pickup-date">Pickup date</label>
+          <input type="date" id="pickup-date" name="pickup_date" />
+        </div>
+        <div class="field">
+          <label for="return-date">Return date</label>
+          <input type="date" id="return-date" name="return_date" />
+        </div>
+        <div class="field">
+          <label for="category">Category</label>
+          <select id="category" name="category">
+            <option value="">Any category</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary search-widget__submit">Update search</button>
+      </div>
+    </div>
+  </form>
+
+  <main id="main-content">
+    <div class="container section--tight" style="padding-bottom:0;">
+      <button type="button" class="btn btn-outline btn-sm" data-filter-drawer-open aria-controls="filter-drawer" style="margin-bottom:var(--space-4);display:none;" id="mobile-filter-toggle">
+        Filters
+      </button>
+    </div>
+
+    <div class="container" style="display:grid;gap:var(--space-6);grid-template-columns:1fr;padding-block:var(--space-4) var(--space-8);">
+      <div style="display:grid;gap:var(--space-6);grid-template-columns:1fr;" id="fleet-layout">
+        <aside class="filter-panel" id="filter-panel" aria-label="Filter vehicles">
+          <h2>Filters</h2>
+          <form id="filter-form">
+            <fieldset>
+              <legend>Category</legend>
+              <ul class="checkbox-list" id="filter-categories"></ul>
+            </fieldset>
+            <fieldset>
+              <legend>Transmission</legend>
+              <ul class="checkbox-list">
+                <li><label><input type="radio" name="transmission" value="" checked /> Any</label></li>
+                <li><label><input type="radio" name="transmission" value="automatic" /> Automatic</label></li>
+                <li><label><input type="radio" name="transmission" value="manual" /> Manual</label></li>
+              </ul>
+            </fieldset>
+            <fieldset>
+              <legend>Minimum seats</legend>
+              <select name="min_seats">
+                <option value="">Any</option>
+                <option value="2">2+</option>
+                <option value="4">4+</option>
+                <option value="5">5+</option>
+                <option value="7">7+</option>
+              </select>
+            </fieldset>
+            <fieldset>
+              <legend>Price per day (USD)</legend>
+              <div class="form-row form-row--2">
+                <div class="field">
+                  <label for="price-min" class="hint">Min</label>
+                  <input type="number" id="price-min" name="price_min" min="0" placeholder="0" />
+                </div>
+                <div class="field">
+                  <label for="price-max" class="hint">Max</label>
+                  <input type="number" id="price-max" name="price_max" min="0" placeholder="300" />
+                </div>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Extras</legend>
+              <ul class="checkbox-list">
+                <li><label><input type="checkbox" name="airport_pickup_available" /> Airport pickup available</label></li>
+              </ul>
+            </fieldset>
+            <button type="submit" class="btn btn-primary btn-block">Apply filters</button>
+            <button type="button" class="btn btn-ghost btn-block" id="reset-filters">Reset</button>
+          </form>
+        </aside>
+
+        <div>
+          <div class="admin-toolbar" style="margin-bottom:var(--space-4);">
+            <p id="results-count" role="status">Loading vehicles…</p>
+            <div class="field" style="flex-direction:row;align-items:center;gap:var(--space-2);">
+              <label for="sort-select" class="hint" style="margin:0;">Sort by</label>
+              <select id="sort-select" style="width:auto;">
+                <option value="recommended">Recommended</option>
+                <option value="price_asc">Price: Low to High</option>
+                <option value="price_desc">Price: High to Low</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid--3" id="vehicle-results" aria-live="polite"></div>
+          <nav aria-label="Pagination">
+            <ul class="pagination" id="pagination"></ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h2>Rwanda Roadways</h2>
+        <p>Affordable premier car rental for tourists exploring Rwanda — self-drive or chauffeured, from Kigali International Airport to the trailhead.</p>
+        <form data-newsletter-form>
+          <label for="newsletter-email">Get trip tips &amp; offers</label>
+          <div class="phone-input">
+            <input type="email" id="newsletter-email" name="email" placeholder="you@example.com" required />
+            <button type="submit" class="btn btn-primary btn-sm">Subscribe</button>
+          </div>
+        </form>
+        <p class="footer-locality">Kigali, Rwanda</p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <ul>
+          <li><a href="fleet.html">Fleet</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="about.html">About / Our Standards</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Account</h2>
+        <ul>
+          <li><a href="account/login.html">Login / Register</a></li>
+          <li><a href="account/bookings.html">My Bookings</a></li>
+          <li><a href="contact.html">Contact Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="tel:+250788000000">+250 788 000 000</a></li>
+          <li><a href="https://wa.me/250788000000">WhatsApp us</a></li>
+          <li><a href="mailto:hello@rwandaroadways.com">hello@rwandaroadways.com</a></li>
+          <li>KN 4 Ave, Kigali, Rwanda</li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Rwanda Roadways. All rights reserved.</p>
+      <ul class="footer-bottom__legal">
+        <li><a href="legal/terms.html">Terms of Service</a></li>
+        <li><a href="legal/privacy.html">Privacy Policy</a></li>
+        <li><a href="legal/cancellation-policy.html">Cancellation &amp; Refund Policy</a></li>
+        <li><a href="legal/driver-requirements.html">Driver Requirements &amp; Insurance</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/data/mock-data.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/format.js"></script>
+  <script src="js/components/toast.js"></script>
+  <script src="js/components/modal.js"></script>
+  <script src="js/components/accordion.js"></script>
+  <script src="js/components/nav.js"></script>
+  <script src="js/components/vehicle-card.js"></script>
+  <script src="js/components/review-card.js"></script>
+  <script src="js/components/search-widget.js"></script>
+  <script src="js/components/footer.js"></script>
+  <script src="js/pages/fleet.js"></script>
+</body>
+</html>

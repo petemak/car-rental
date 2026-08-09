@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing &amp; Extras | Rwanda Roadways Admin</title>
+  <meta name="description" content="Configure payment model, deposit percentage, extras pricing, and seasonal rates." />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/admin.css" />
+</head>
+<body class="admin-body">
+  <div class="admin-topbar">
+    <button type="button" class="nav-toggle" id="sidebar-toggle" aria-label="Toggle menu" style="border-color:rgba(255,255,255,.5);">☰</button>
+    <a class="admin-topbar__brand" href="dashboard.html">Rwanda Roadways <span style="opacity:.7;font-weight:400;">Admin</span></a>
+    <div class="admin-topbar__user">
+      <span id="admin-user-name">Staff</span>
+      <button type="button" class="btn btn-outline-light btn-sm" id="admin-logout-btn">Log out</button>
+    </div>
+  </div>
+
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="admin-sidebar" aria-label="Admin navigation">
+      <ul class="admin-nav">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="fleet.html">Fleet</a></li>
+        <li><a href="bookings.html">Bookings</a></li>
+        <li><a href="customers.html">Customers</a></li>
+        <li data-role-restricted><a href="pricing.html" aria-current="page">Pricing</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="content.html">Content</a></li>
+        <li data-role-restricted><a href="users.html">Admin Users</a></li>
+        <li data-role-restricted><a href="settings.html">Settings</a></li>
+      </ul>
+    </aside>
+
+    <div class="admin-main">
+      <div class="admin-header">
+        <div>
+          <h1>Pricing &amp; Extras</h1>
+          <p>Super Admin only — Booking Staff receive <code>403</code> from these endpoints per api-contract.md Section 0.</p>
+        </div>
+      </div>
+
+      <div id="pricing-forbidden" hidden class="alert alert--error">Your role (Booking Staff) does not have access to Pricing Settings.</div>
+
+      <div id="pricing-content" hidden>
+        <div class="admin-panel">
+          <h2>Payment model</h2>
+          <form id="pricing-form" class="form-grid">
+            <div class="form-row form-row--2">
+              <div class="field">
+                <label for="payment-model">Payment model</label>
+                <select id="payment-model" name="payment_model">
+                  <option value="deposit">Deposit now, balance on arrival</option>
+                  <option value="full">Full payment at booking</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="deposit-percentage">Deposit percentage</label>
+                <input type="number" id="deposit-percentage" name="deposit_percentage" min="0" max="100" />
+              </div>
+            </div>
+            <h3>Extras pricing (USD)</h3>
+            <div class="form-row form-row--2">
+              <div class="field">
+                <label for="chauffeur-fee">Chauffeur fee / day</label>
+                <input type="number" id="chauffeur-fee" name="chauffeur_fee_per_day" step="0.01" min="0" />
+              </div>
+              <div class="field">
+                <label for="airport-fee">Airport pickup fee</label>
+                <input type="number" id="airport-fee" name="airport_pickup_fee" step="0.01" min="0" />
+              </div>
+            </div>
+            <div class="form-row form-row--2">
+              <div class="field">
+                <label for="additional-driver-fee">Additional driver fee / day</label>
+                <input type="number" id="additional-driver-fee" name="additional_driver_fee" step="0.01" min="0" />
+              </div>
+              <div class="field">
+                <label for="child-seat-fee">Child seat fee / day</label>
+                <input type="number" id="child-seat-fee" name="child_seat_fee" step="0.01" min="0" />
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Save pricing settings</button>
+            <p id="pricing-result" role="status"></p>
+          </form>
+        </div>
+
+        <div class="admin-panel">
+          <h2>Seasonal rates</h2>
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead><tr><th scope="col">Vehicle / Category</th><th scope="col">Start</th><th scope="col">End</th><th scope="col">Price / day</th><th scope="col"></th></tr></thead>
+              <tbody id="seasonal-rates-body"><tr><td colspan="5">Loading…</td></tr></tbody>
+            </table>
+          </div>
+          <form id="seasonal-form" class="form-row form-row--3" style="margin-top:var(--space-4);">
+            <div class="field">
+              <label for="sr-category">Category id</label>
+              <input type="text" id="sr-category" name="category_id" placeholder="cat_offroad" />
+            </div>
+            <div class="field">
+              <label for="sr-start">Start date</label>
+              <input type="date" id="sr-start" name="start_date" required />
+            </div>
+            <div class="field">
+              <label for="sr-end">End date</label>
+              <input type="date" id="sr-end" name="end_date" required />
+            </div>
+            <div class="field">
+              <label for="sr-price">Price / day (USD)</label>
+              <input type="number" id="sr-price" name="price_per_day" step="0.01" required />
+            </div>
+            <button type="submit" class="btn btn-outline">Add seasonal rate</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/data/mock-data.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/format.js"></script>
+  <script src="../js/components/toast.js"></script>
+  <script src="../js/components/admin-shell.js"></script>
+  <script src="../js/pages/admin-pricing.js"></script>
+</body>
+</html>

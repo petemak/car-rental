@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Booking Detail | Rwanda Roadways Admin</title>
+  <meta name="description" content="Full booking, customer and payment info, with status controls." />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/admin.css" />
+</head>
+<body class="admin-body">
+  <div class="admin-topbar">
+    <button type="button" class="nav-toggle" id="sidebar-toggle" aria-label="Toggle menu" style="border-color:rgba(255,255,255,.5);">☰</button>
+    <a class="admin-topbar__brand" href="dashboard.html">Rwanda Roadways <span style="opacity:.7;font-weight:400;">Admin</span></a>
+    <div class="admin-topbar__user">
+      <span id="admin-user-name">Staff</span>
+      <button type="button" class="btn btn-outline-light btn-sm" id="admin-logout-btn">Log out</button>
+    </div>
+  </div>
+
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="admin-sidebar" aria-label="Admin navigation">
+      <ul class="admin-nav">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="fleet.html">Fleet</a></li>
+        <li><a href="bookings.html" aria-current="page">Bookings</a></li>
+        <li><a href="customers.html">Customers</a></li>
+        <li data-role-restricted><a href="pricing.html">Pricing</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="content.html">Content</a></li>
+        <li data-role-restricted><a href="users.html">Admin Users</a></li>
+        <li data-role-restricted><a href="settings.html">Settings</a></li>
+      </ul>
+    </aside>
+
+    <div class="admin-main" id="booking-detail-main">
+      <p role="status">Loading booking…</p>
+    </div>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/data/mock-data.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/format.js"></script>
+  <script src="../js/components/toast.js"></script>
+  <script src="../js/components/admin-shell.js"></script>
+  <script src="../js/pages/admin-booking-detail.js"></script>
+</body>
+</html>

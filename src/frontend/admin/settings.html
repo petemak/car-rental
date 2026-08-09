@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Business Settings | Rwanda Roadways Admin</title>
+  <meta name="description" content="Contact info, notification templates, payment provider config, default currency." />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/admin.css" />
+</head>
+<body class="admin-body">
+  <div class="admin-topbar">
+    <button type="button" class="nav-toggle" id="sidebar-toggle" aria-label="Toggle menu" style="border-color:rgba(255,255,255,.5);">☰</button>
+    <a class="admin-topbar__brand" href="dashboard.html">Rwanda Roadways <span style="opacity:.7;font-weight:400;">Admin</span></a>
+    <div class="admin-topbar__user">
+      <span id="admin-user-name">Staff</span>
+      <button type="button" class="btn btn-outline-light btn-sm" id="admin-logout-btn">Log out</button>
+    </div>
+  </div>
+
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="admin-sidebar" aria-label="Admin navigation">
+      <ul class="admin-nav">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="fleet.html">Fleet</a></li>
+        <li><a href="bookings.html">Bookings</a></li>
+        <li><a href="customers.html">Customers</a></li>
+        <li data-role-restricted><a href="pricing.html">Pricing</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="content.html">Content</a></li>
+        <li data-role-restricted><a href="users.html">Admin Users</a></li>
+        <li data-role-restricted><a href="settings.html" aria-current="page">Settings</a></li>
+      </ul>
+    </aside>
+
+    <div class="admin-main">
+      <div class="admin-header">
+        <div>
+          <h1>Business Settings</h1>
+          <p>Super Admin only.</p>
+        </div>
+      </div>
+
+      <div id="settings-forbidden" hidden class="alert alert--error">Your role (Booking Staff) does not have access to Business Settings.</div>
+
+      <form id="settings-form" class="form-grid" hidden>
+        <div class="admin-panel">
+          <h2>Contact info</h2>
+          <div class="form-row form-row--2">
+            <div class="field">
+              <label for="business-name">Business name</label>
+              <input type="text" id="business-name" name="business_name" required />
+            </div>
+            <div class="field">
+              <label for="contact-email">Contact email</label>
+              <input type="email" id="contact-email" name="contact_email" required />
+            </div>
+          </div>
+          <div class="form-row form-row--2">
+            <div class="field">
+              <label for="contact-phone">Contact phone</label>
+              <input type="tel" id="contact-phone" name="contact_phone" />
+            </div>
+            <div class="field">
+              <label for="whatsapp-number">WhatsApp number</label>
+              <input type="tel" id="whatsapp-number" name="whatsapp_number" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="office-address">Office address</label>
+            <input type="text" id="office-address" name="office_address" />
+          </div>
+        </div>
+
+        <div class="admin-panel">
+          <h2>Notification templates</h2>
+          <div class="field">
+            <label for="tpl-confirmed">Booking confirmed</label>
+            <textarea id="tpl-confirmed" name="notification_templates.booking_confirmed"></textarea>
+          </div>
+          <div class="field">
+            <label for="tpl-reminder">Booking reminder (~48h before pickup)</label>
+            <textarea id="tpl-reminder" name="notification_templates.booking_reminder"></textarea>
+          </div>
+          <div class="field">
+            <label for="tpl-cancelled">Booking cancelled</label>
+            <textarea id="tpl-cancelled" name="notification_templates.booking_cancelled"></textarea>
+          </div>
+        </div>
+
+        <div class="admin-panel">
+          <h2>Payment provider</h2>
+          <div class="form-row form-row--2">
+            <div class="field">
+              <label for="payment-provider">Provider</label>
+              <select id="payment-provider" name="payment_provider.provider">
+                <option value="stripe">Stripe</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="payment-public-key">Public key</label>
+              <input type="text" id="payment-public-key" name="payment_provider.public_key" />
+            </div>
+          </div>
+          <p class="hint">See final report: this public key is currently only exposed via this staff-only endpoint — the customer-facing checkout has no documented way to fetch it (flagged ambiguity).</p>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save settings</button>
+        <p id="settings-result" role="status"></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/data/mock-data.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/format.js"></script>
+  <script src="../js/components/toast.js"></script>
+  <script src="../js/components/admin-shell.js"></script>
+  <script src="../js/pages/admin-settings.js"></script>
+</body>
+</html>

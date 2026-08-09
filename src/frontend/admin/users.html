@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Users &amp; Roles | Rwanda Roadways Admin</title>
+  <meta name="description" content="Manage staff accounts and roles." />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/admin.css" />
+</head>
+<body class="admin-body">
+  <div class="admin-topbar">
+    <button type="button" class="nav-toggle" id="sidebar-toggle" aria-label="Toggle menu" style="border-color:rgba(255,255,255,.5);">☰</button>
+    <a class="admin-topbar__brand" href="dashboard.html">Rwanda Roadways <span style="opacity:.7;font-weight:400;">Admin</span></a>
+    <div class="admin-topbar__user">
+      <span id="admin-user-name">Staff</span>
+      <button type="button" class="btn btn-outline-light btn-sm" id="admin-logout-btn">Log out</button>
+    </div>
+  </div>
+
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="admin-sidebar" aria-label="Admin navigation">
+      <ul class="admin-nav">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="fleet.html">Fleet</a></li>
+        <li><a href="bookings.html">Bookings</a></li>
+        <li><a href="customers.html">Customers</a></li>
+        <li data-role-restricted><a href="pricing.html">Pricing</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="content.html">Content</a></li>
+        <li data-role-restricted><a href="users.html" aria-current="page">Admin Users</a></li>
+        <li data-role-restricted><a href="settings.html">Settings</a></li>
+      </ul>
+    </aside>
+
+    <div class="admin-main">
+      <div class="admin-header">
+        <div>
+          <h1>Admin Users &amp; Roles</h1>
+          <p>Super Admin only — Booking Staff can view bookings/fleet/customers/reviews/content but not add other admins.</p>
+        </div>
+      </div>
+
+      <div id="users-forbidden" hidden class="alert alert--error">Your role (Booking Staff) does not have access to Admin Users.</div>
+
+      <div id="users-content" hidden>
+        <div class="admin-panel">
+          <h2>Add staff account</h2>
+          <form id="add-user-form" class="form-row form-row--3">
+            <div class="field">
+              <label for="user-name">Name</label>
+              <input type="text" id="user-name" name="name" required />
+            </div>
+            <div class="field">
+              <label for="user-email">Email</label>
+              <input type="email" id="user-email" name="email" required />
+            </div>
+            <div class="field">
+              <label for="user-role">Role</label>
+              <select id="user-role" name="role">
+                <option value="booking_staff">Booking Staff</option>
+                <option value="super_admin">Super Admin</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="user-password">Temporary password</label>
+              <input type="password" id="user-password" name="password" required minlength="8" autocomplete="new-password" />
+            </div>
+            <button type="submit" class="btn btn-primary">Add user</button>
+            <p id="add-user-result" role="status"></p>
+          </form>
+        </div>
+
+        <div class="admin-panel">
+          <h2>Staff accounts</h2>
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead><tr><th scope="col">Name</th><th scope="col">Email</th><th scope="col">Role</th><th scope="col"></th></tr></thead>
+              <tbody id="users-table-body"><tr><td colspan="4">Loading…</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/data/mock-data.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/format.js"></script>
+  <script src="../js/components/toast.js"></script>
+  <script src="../js/components/admin-shell.js"></script>
+  <script src="../js/pages/admin-users.js"></script>
+</body>
+</html>

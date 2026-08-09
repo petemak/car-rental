@@ -1,0 +1,18 @@
+{:http {:port #long #or [#env PORT 3000]
+        :join? false}
+
+ :auth {:jwt-secret #or [#env JWT_SECRET "dev-secret-change-me-please-1234567890"]
+        :customer-token-ttl-seconds 3600
+        :admin-token-ttl-seconds 3600
+        :refresh-token-ttl-seconds 2592000}
+
+ :store {:seed? true}
+
+ :cors {:allowed-origins #or [#env CORS_ORIGINS "*"]}
+
+ ;; DEV/DEMO-ONLY switches — see car_rental.backend.handlers.payments/
+ ;; simulate-success. Not part of api-contract.md's original scope; added
+ ;; so checkout can be demoed end-to-end without a real payment provider.
+ ;; Set DEV_PAYMENT_SIMULATION_ENABLED=false (or edit this file) before any
+ ;; real deployment.
+ :features {:dev-payment-simulation-enabled #env DEV_PAYMENT_SIMULATION_ENABLED}}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Staff Login | Rwanda Roadways Admin</title>
+  <meta name="description" content="Staff login for Rwanda Roadways back-office." />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/admin.css" />
+</head>
+<body class="admin-body">
+  <main class="login-shell">
+    <div class="login-card">
+      <a class="login-card__brand" href="../index.html">Rwanda Roadways</a>
+      <h1 style="text-align:center;font-size:var(--fs-lg);">Staff sign in</h1>
+      <form id="admin-login-form" class="form-grid">
+        <div class="field">
+          <label for="admin-email">Email</label>
+          <input type="email" id="admin-email" name="email" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="admin-password">Password</label>
+          <input type="password" id="admin-password" name="password" autocomplete="current-password" required />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+        <p id="login-result" role="status"></p>
+      </form>
+      <p class="hint" style="text-align:center;margin-top:var(--space-4);">Two-factor authentication support is planned for a future release (design-spec.md Section 3.1).</p>
+    </div>
+  </main>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/data/mock-data.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/format.js"></script>
+  <script src="../js/pages/admin-login.js"></script>
+</body>
+</html>

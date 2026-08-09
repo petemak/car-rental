@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rwanda Roadways — Self-Drive &amp; Chauffeured Car Rental in Kigali, Rwanda</title>
+  <meta name="description" content="Well-maintained cars, SUVs and Land Cruisers for tourists exploring Rwanda. Airport pickup, optional chauffeur, transparent pricing. Book online in minutes." />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container site-header__bar">
+      <a class="site-header__logo" href="index.html">Rwanda <span>Roadways</span></a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a href="fleet.html">Fleet</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__actions">
+        <label class="visually-hidden" for="currency-select">Currency</label>
+        <select id="currency-select" class="currency-select" data-currency-select>
+          <option value="USD">USD $</option>
+          <option value="EUR">EUR €</option>
+          <option value="GBP">GBP £</option>
+          <option value="RWF">RWF</option>
+        </select>
+        <a class="account-link" href="account/login.html" data-account-link data-account-href-loggedin="account/bookings.html">Login</a>
+        <a class="btn btn-primary btn-sm" href="fleet.html">Book Now</a>
+        <button type="button" class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav">
+          <span class="visually-hidden">Menu</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav id="mobile-nav" class="mobile-nav" data-mobile-nav aria-label="Mobile">
+      <ul class="mobile-nav__list">
+        <li><a href="fleet.html">Fleet</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="account/login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero">
+      <div class="container hero__inner">
+        <p class="eyebrow">Kigali, Rwanda</p>
+        <h1>Your trip, from the tarmac to the trailhead.</h1>
+        <p class="hero__lede">One well-maintained fleet — from city-friendly Toyota Aygos to off-road-ready Land Cruisers — with airport pickup and optional chauffeur service, so transport is one less thing to worry about.</p>
+      </div>
+      <div class="container">
+        <form class="search-widget" id="hero-search-form" aria-label="Search available vehicles">
+          <div class="search-widget__toggle" role="radiogroup" aria-label="Service type">
+            <input type="radio" id="svc-self-hero" name="service_type" value="self_drive" checked />
+            <label class="btn btn-outline" for="svc-self-hero" style="flex:1;text-align:center;">Self-Drive</label>
+            <input type="radio" id="svc-chauffeur-hero" name="service_type" value="chauffeur" />
+            <label class="btn btn-outline" for="svc-chauffeur-hero" style="flex:1;text-align:center;">Chauffeur</label>
+          </div>
+          <div class="search-widget__grid">
+            <div class="field">
+              <label for="pickup-location-hero">Pickup location</label>
+              <select id="pickup-location-hero" name="pickup_location_id" required>
+                <option value="">Select location</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="pickup-date-hero">Pickup date</label>
+              <input type="date" id="pickup-date-hero" name="pickup_date" required />
+            </div>
+            <div class="field">
+              <label for="return-date-hero">Return date</label>
+              <input type="date" id="return-date-hero" name="return_date" required />
+            </div>
+            <div class="field">
+              <label for="category-hero">Vehicle category</label>
+              <select id="category-hero" name="category">
+                <option value="">Any category</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary search-widget__submit">Search vehicles</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section section--tight">
+      <div class="container">
+        <h2 class="visually-hidden">Why travelers trust us</h2>
+        <div class="trust-bar">
+          <div class="trust-bar__item">
+            <span class="trust-bar__icon" aria-hidden="true">✓</span>
+            Well-maintained fleet
+          </div>
+          <div class="trust-bar__item">
+            <span class="trust-bar__icon" aria-hidden="true">✈</span>
+            Airport pickup
+          </div>
+          <div class="trust-bar__item">
+            <span class="trust-bar__icon" aria-hidden="true">🧑‍✈️</span>
+            Chauffeur available
+          </div>
+          <div class="trust-bar__item">
+            <span class="trust-bar__icon" aria-hidden="true">★</span>
+            Real reviews
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Our fleet</p>
+          <h2>One fleet, every kind of Rwanda trip</h2>
+          <p>From compact city cars to off-road-ready Land Cruisers — pick the vehicle that fits your itinerary.</p>
+        </div>
+        <div class="grid grid--4" id="featured-vehicles" aria-live="polite">
+          <div class="vehicle-card" aria-hidden="true"><div class="skeleton" style="aspect-ratio:4/3;"></div></div>
+          <div class="vehicle-card" aria-hidden="true"><div class="skeleton" style="aspect-ratio:4/3;"></div></div>
+          <div class="vehicle-card" aria-hidden="true"><div class="skeleton" style="aspect-ratio:4/3;"></div></div>
+          <div class="vehicle-card" aria-hidden="true"><div class="skeleton" style="aspect-ratio:4/3;"></div></div>
+        </div>
+        <p style="margin-top:var(--space-5);"><a class="btn btn-outline" href="fleet.html">View full fleet</a></p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">End-to-end service</p>
+          <h2>Everything under one roof</h2>
+          <p>Self-drive, chauffeur, and airport pickup — pick the combination that removes the most logistics for your trip.</p>
+        </div>
+        <div class="grid grid--3">
+          <article class="value-card">
+            <div class="value-card__icon" aria-hidden="true">✈</div>
+            <h3>Airport Pickup</h3>
+            <p>Land at Kigali International Airport and your vehicle (or driver) is waiting. No queues, no haggling with taxi touts.</p>
+            <a href="services.html#airport-pickup">Learn more →</a>
+          </article>
+          <article class="value-card">
+            <div class="value-card__icon" aria-hidden="true">🧑‍✈️</div>
+            <h3>Chauffeur Service</h3>
+            <p>Let a local driver handle mountain roads and unfamiliar routes while you take in the scenery.</p>
+            <a href="services.html#chauffeur">Learn more →</a>
+          </article>
+          <article class="value-card">
+            <div class="value-card__icon" aria-hidden="true">🚗</div>
+            <h3>Self-Drive</h3>
+            <p>Explore at your own pace with a well-maintained vehicle, clear mileage terms, and 24/7 road support.</p>
+            <a href="services.html#self-drive">Learn more →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container two-col">
+        <div>
+          <p class="eyebrow">Why Rwanda Roadways</p>
+          <h2>Affordable premier — pricing you can justify, service you'll want to repeat</h2>
+          <p>Every vehicle is inspected and cleaned before it reaches you, mileage limits and fuel policy are stated up front on every listing, and there are no hidden fees between what you see at search and what you pay at checkout.</p>
+          <ul class="icon-list">
+            <li>✓ Transparent, price-forward listings</li>
+            <li>✓ Documented maintenance standard on every vehicle</li>
+            <li>✓ No hidden fees — full breakdown before you pay</li>
+          </ul>
+          <a class="btn btn-outline" href="about.html">Read our standards</a>
+        </div>
+        <div>
+          <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?w=900&q=80" alt="Toyota Land Cruiser parked on a red laterite road with Rwandan hills in the background" loading="lazy" style="border-radius:var(--radius-md);" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Explore Rwanda</p>
+          <h2>Trip inspiration, not just transport</h2>
+          <p>Guides for the routes our customers drive most — with the vehicle category we'd recommend for each.</p>
+        </div>
+        <div class="grid grid--3" id="destination-teasers" aria-live="polite"></div>
+        <p style="margin-top:var(--space-5);"><a class="btn btn-outline" href="destinations.html">See all destinations</a></p>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Real reviews</p>
+          <h2>What travelers say</h2>
+        </div>
+        <div class="grid grid--3" id="review-strip" aria-live="polite"></div>
+        <p style="margin-top:var(--space-5);"><a class="btn btn-outline" href="reviews.html">Read all reviews</a></p>
+      </div>
+    </section>
+
+    <section class="cta-banner">
+      <div class="container">
+        <h2>Ready to explore Rwanda?</h2>
+        <p>Check availability for your dates and get a transparent price in under a minute.</p>
+        <a class="btn btn-outline-light" href="fleet.html">Check availability</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h2>Rwanda Roadways</h2>
+        <p>Affordable premier car rental for tourists exploring Rwanda — self-drive or chauffeured, from Kigali International Airport to the trailhead.</p>
+        <form data-newsletter-form>
+          <label for="newsletter-email">Get trip tips &amp; offers</label>
+          <div class="phone-input">
+            <input type="email" id="newsletter-email" name="email" placeholder="you@example.com" required />
+            <button type="submit" class="btn btn-primary btn-sm">Subscribe</button>
+          </div>
+        </form>
+        <p class="footer-locality">Kigali, Rwanda</p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <ul>
+          <li><a href="fleet.html">Fleet</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="about.html">About / Our Standards</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Account</h2>
+        <ul>
+          <li><a href="account/login.html">Login / Register</a></li>
+          <li><a href="account/bookings.html">My Bookings</a></li>
+          <li><a href="contact.html">Contact Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="tel:+250788000000">+250 788 000 000</a></li>
+          <li><a href="https://wa.me/250788000000">WhatsApp us</a></li>
+          <li><a href="mailto:hello@rwandaroadways.com">hello@rwandaroadways.com</a></li>
+          <li>KN 4 Ave, Kigali, Rwanda</li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Rwanda Roadways. All rights reserved.</p>
+      <ul class="footer-bottom__legal">
+        <li><a href="legal/terms.html">Terms of Service</a></li>
+        <li><a href="legal/privacy.html">Privacy Policy</a></li>
+        <li><a href="legal/cancellation-policy.html">Cancellation &amp; Refund Policy</a></li>
+        <li><a href="legal/driver-requirements.html">Driver Requirements &amp; Insurance</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/data/mock-data.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/format.js"></script>
+  <script src="js/components/toast.js"></script>
+  <script src="js/components/modal.js"></script>
+  <script src="js/components/accordion.js"></script>
+  <script src="js/components/nav.js"></script>
+  <script src="js/components/vehicle-card.js"></script>
+  <script src="js/components/review-card.js"></script>
+  <script src="js/components/search-widget.js"></script>
+  <script src="js/components/footer.js"></script>
+  <script src="js/pages/home.js"></script>
+</body>
+</html>

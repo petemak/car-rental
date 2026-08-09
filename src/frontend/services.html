@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — Self-Drive, Chauffeur &amp; Airport Pickup | Rwanda Roadways</title>
+  <meta name="description" content="Self-drive, chauffeur service, and airport pickup in Kigali — what each is, who it's for, and how pricing works." />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container site-header__bar">
+      <a class="site-header__logo" href="index.html">Rwanda <span>Roadways</span></a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a href="fleet.html">Fleet</a></li>
+          <li><a href="services.html" aria-current="page">Services</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__actions">
+        <label class="visually-hidden" for="currency-select">Currency</label>
+        <select id="currency-select" class="currency-select" data-currency-select>
+          <option value="USD">USD $</option>
+          <option value="EUR">EUR €</option>
+          <option value="GBP">GBP £</option>
+          <option value="RWF">RWF</option>
+        </select>
+        <a class="account-link" href="account/login.html" data-account-link data-account-href-loggedin="account/bookings.html">Login</a>
+        <a class="btn btn-primary btn-sm" href="fleet.html">Book Now</a>
+        <button type="button" class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav">
+          <span class="visually-hidden">Menu</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav id="mobile-nav" class="mobile-nav" data-mobile-nav aria-label="Mobile">
+      <ul class="mobile-nav__list">
+        <li><a href="fleet.html">Fleet</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="account/login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" style="padding-block:var(--space-7) var(--space-6);">
+      <div class="container hero__inner">
+        <p class="eyebrow">Services</p>
+        <h1>Whichever way you'd rather travel, we've got it covered</h1>
+        <p class="hero__lede">Self-drive, chauffeur, and airport pickup — combine them however suits your itinerary and comfort level.</p>
+      </div>
+    </section>
+
+    <section class="section" id="self-drive">
+      <div class="container two-col">
+        <div>
+          <p class="eyebrow">Self-Drive</p>
+          <h2>Explore at your own pace</h2>
+          <p><strong>What it is:</strong> Rent a well-maintained vehicle and drive yourself, with a documented mileage allowance and full-to-full fuel policy stated up front.</p>
+          <p><strong>Who it's for:</strong> Confident drivers comfortable navigating unfamiliar roads, or travelers on flexible, spontaneous itineraries.</p>
+          <p><strong>How pricing works:</strong> The daily rate shown on each vehicle listing includes the vehicle only — airport pickup, chauffeur, additional driver and child seat are optional add-ons priced separately and shown in your price breakdown before you pay.</p>
+          <p><strong>What's included:</strong> Vehicle inspection before pickup, 24/7 breakdown support, and a full policy sheet (mileage, fuel, minimum driver age, license requirements) on every vehicle page.</p>
+          <a class="btn btn-primary" href="fleet.html?service_type=self_drive">Browse self-drive vehicles</a>
+        </div>
+        <div>
+          <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?w=900&q=80" alt="Traveler loading luggage into a self-drive rental car" loading="lazy" style="border-radius:var(--radius-md);" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="chauffeur">
+      <div class="container two-col two-col--reverse">
+        <div>
+          <img src="https://images.unsplash.com/photo-1533106418989-88406c7cc8ca?w=900&q=80" alt="Chauffeur standing beside an SUV, ready to greet a guest" loading="lazy" style="border-radius:var(--radius-md);" />
+        </div>
+        <div>
+          <p class="eyebrow">Chauffeur Service</p>
+          <h2>Let a local driver take the wheel</h2>
+          <p><strong>What it is:</strong> A vetted local driver handles the route — especially useful for mountain roads to Nyungwe or Volcanoes National Park.</p>
+          <p><strong>Who it's for:</strong> First-time visitors unfamiliar with Rwandan roads, families, or anyone who'd rather watch the scenery than the switchbacks.</p>
+          <p><strong>How pricing works:</strong> A per-day chauffeur fee is added on top of the vehicle's daily rate — shown live in your price breakdown as soon as you select "Chauffeur."</p>
+          <p><strong>What's included:</strong> A driver with local route knowledge, available on any chauffeur-eligible vehicle (marked on its listing).</p>
+          <a class="btn btn-primary" href="fleet.html?service_type=chauffeur">Browse chauffeur-eligible vehicles</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="airport-pickup">
+      <div class="container two-col">
+        <div>
+          <p class="eyebrow">Airport Pickup</p>
+          <h2>Land, and your ride is already waiting</h2>
+          <p><strong>What it is:</strong> Add airport pickup at checkout and provide your flight number — your vehicle or driver will be at Kigali International Airport arrivals when you land.</p>
+          <p><strong>Who it's for:</strong> Every traveler arriving from abroad — it removes the very first friction point of the trip.</p>
+          <p><strong>How pricing works:</strong> A flat airport pickup fee is added to your booking, shown in the price breakdown at checkout.</p>
+          <p><strong>What's included:</strong> Flight tracking (so late arrivals are accounted for) and a driver holding a Rwanda Roadways sign at arrivals.</p>
+          <a class="btn btn-primary" href="fleet.html">Browse vehicles with airport pickup</a>
+        </div>
+        <div>
+          <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=900&q=80" alt="Airport arrivals hall" loading="lazy" style="border-radius:var(--radius-md);" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section--tight">
+      <div class="container">
+        <div class="trust-bar">
+          <div class="trust-bar__item"><span class="trust-bar__icon" aria-hidden="true">✓</span>Well-maintained fleet</div>
+          <div class="trust-bar__item"><span class="trust-bar__icon" aria-hidden="true">✈</span>Airport pickup</div>
+          <div class="trust-bar__item"><span class="trust-bar__icon" aria-hidden="true">🧑‍✈️</span>Chauffeur available</div>
+          <div class="trust-bar__item"><span class="trust-bar__icon" aria-hidden="true">★</span>Real reviews</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-banner cta-banner--teal">
+      <div class="container">
+        <h2>Not sure which service fits your trip?</h2>
+        <p>Tell us your itinerary and we'll recommend a setup.</p>
+        <a class="btn btn-outline-light" href="contact.html">Ask us</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h2>Rwanda Roadways</h2>
+        <p>Affordable premier car rental for tourists exploring Rwanda — self-drive or chauffeured, from Kigali International Airport to the trailhead.</p>
+        <form data-newsletter-form>
+          <label for="newsletter-email">Get trip tips &amp; offers</label>
+          <div class="phone-input">
+            <input type="email" id="newsletter-email" name="email" placeholder="you@example.com" required />
+            <button type="submit" class="btn btn-primary btn-sm">Subscribe</button>
+          </div>
+        </form>
+        <p class="footer-locality">Kigali, Rwanda</p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <ul>
+          <li><a href="fleet.html">Fleet</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="about.html">About / Our Standards</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Account</h2>
+        <ul>
+          <li><a href="account/login.html">Login / Register</a></li>
+          <li><a href="account/bookings.html">My Bookings</a></li>
+          <li><a href="contact.html">Contact Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="tel:+250788000000">+250 788 000 000</a></li>
+          <li><a href="https://wa.me/250788000000">WhatsApp us</a></li>
+          <li><a href="mailto:hello@rwandaroadways.com">hello@rwandaroadways.com</a></li>
+          <li>KN 4 Ave, Kigali, Rwanda</li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Rwanda Roadways. All rights reserved.</p>
+      <ul class="footer-bottom__legal">
+        <li><a href="legal/terms.html">Terms of Service</a></li>
+        <li><a href="legal/privacy.html">Privacy Policy</a></li>
+        <li><a href="legal/cancellation-policy.html">Cancellation &amp; Refund Policy</a></li>
+        <li><a href="legal/driver-requirements.html">Driver Requirements &amp; Insurance</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/data/mock-data.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/format.js"></script>
+  <script src="js/components/toast.js"></script>
+  <script src="js/components/nav.js"></script>
+  <script src="js/components/footer.js"></script>
+</body>
+</html>

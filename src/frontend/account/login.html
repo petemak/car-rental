@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login / Register | Rwanda Roadways</title>
+  <meta name="description" content="Log in, create an account, or look up an existing booking with just your reference and email." />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container site-header__bar">
+      <a class="site-header__logo" href="../index.html">Rwanda <span>Roadways</span></a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a href="../fleet.html">Fleet</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../destinations.html">Destinations</a></li>
+          <li><a href="../reviews.html">Reviews</a></li>
+          <li><a href="../faq.html">FAQ</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__actions">
+        <button type="button" class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav">
+          <span class="visually-hidden">Menu</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav id="mobile-nav" class="mobile-nav" data-mobile-nav aria-label="Mobile">
+      <ul class="mobile-nav__list">
+        <li><a href="../fleet.html">Fleet</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <div class="container section" style="max-width:34rem;">
+      <h1>Your account</h1>
+      <p>An account is optional — most guests check out without one. Use it to save your details for next time and see your booking history.</p>
+
+      <div role="tablist" aria-label="Account access" style="display:flex;gap:var(--space-2);margin-bottom:var(--space-5);">
+        <button type="button" class="btn btn-outline" role="tab" id="tab-login" aria-controls="panel-login" aria-selected="true">Login</button>
+        <button type="button" class="btn btn-outline" role="tab" id="tab-register" aria-controls="panel-register" aria-selected="false">Register</button>
+        <button type="button" class="btn btn-outline" role="tab" id="tab-lookup" aria-controls="panel-lookup" aria-selected="false">Look up my booking</button>
+      </div>
+
+      <section id="panel-login" role="tabpanel" aria-labelledby="tab-login">
+        <form id="login-form" class="form-grid">
+          <div class="field">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" name="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" name="password" autocomplete="current-password" required />
+          </div>
+          <button type="submit" class="btn btn-primary">Log in</button>
+          <p id="login-result" role="status"></p>
+          <p><a href="#" id="forgot-password-link">Forgot your password?</a></p>
+        </form>
+      </section>
+
+      <section id="panel-register" role="tabpanel" aria-labelledby="tab-register" hidden>
+        <form id="register-form" class="form-grid">
+          <div class="form-row form-row--2">
+            <div class="field">
+              <label for="reg-first-name">First name</label>
+              <input type="text" id="reg-first-name" name="first_name" autocomplete="given-name" required />
+            </div>
+            <div class="field">
+              <label for="reg-last-name">Last name</label>
+              <input type="text" id="reg-last-name" name="last_name" autocomplete="family-name" required />
+            </div>
+          </div>
+          <div class="field">
+            <label for="reg-email">Email</label>
+            <input type="email" id="reg-email" name="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="reg-phone">Phone</label>
+            <input type="tel" id="reg-phone" name="phone" placeholder="+1 555 010 2000" autocomplete="tel" required />
+          </div>
+          <div class="field">
+            <label for="reg-password">Password</label>
+            <input type="password" id="reg-password" name="password" autocomplete="new-password" required minlength="8" />
+          </div>
+          <button type="submit" class="btn btn-primary">Create account</button>
+          <p id="register-result" role="status"></p>
+        </form>
+      </section>
+
+      <section id="panel-lookup" role="tabpanel" aria-labelledby="tab-lookup" hidden>
+        <p>No account needed — just your booking reference and the email used at checkout.</p>
+        <form id="lookup-form" class="form-grid">
+          <div class="field">
+            <label for="lookup-reference">Booking reference</label>
+            <input type="text" id="lookup-reference" name="reference" placeholder="RR-9001" required />
+          </div>
+          <div class="field">
+            <label for="lookup-email">Email</label>
+            <input type="email" id="lookup-email" name="email" autocomplete="email" required />
+          </div>
+          <button type="submit" class="btn btn-primary">Find my booking</button>
+          <p id="lookup-result" role="status"></p>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Rwanda Roadways. All rights reserved.</p>
+      <ul class="footer-bottom__legal">
+        <li><a href="../legal/terms.html">Terms of Service</a></li>
+        <li><a href="../legal/privacy.html">Privacy Policy</a></li>
+        <li><a href="../legal/cancellation-policy.html">Cancellation &amp; Refund Policy</a></li>
+        <li><a href="../legal/driver-requirements.html">Driver Requirements &amp; Insurance</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/data/mock-data.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/format.js"></script>
+  <script src="../js/components/toast.js"></script>
+  <script src="../js/components/nav.js"></script>
+  <script src="../js/pages/account-login.js"></script>
+</body>
+</html>

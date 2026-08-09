@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Destinations Content | Rwanda Roadways Admin</title>
+  <meta name="description" content="Manage destination and trip guide content shown on the public Destinations page." />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/admin.css" />
+</head>
+<body class="admin-body">
+  <div class="admin-topbar">
+    <button type="button" class="nav-toggle" id="sidebar-toggle" aria-label="Toggle menu" style="border-color:rgba(255,255,255,.5);">☰</button>
+    <a class="admin-topbar__brand" href="dashboard.html">Rwanda Roadways <span style="opacity:.7;font-weight:400;">Admin</span></a>
+    <div class="admin-topbar__user">
+      <span id="admin-user-name">Staff</span>
+      <button type="button" class="btn btn-outline-light btn-sm" id="admin-logout-btn">Log out</button>
+    </div>
+  </div>
+
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="admin-sidebar" aria-label="Admin navigation">
+      <ul class="admin-nav">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="fleet.html">Fleet</a></li>
+        <li><a href="bookings.html">Bookings</a></li>
+        <li><a href="customers.html">Customers</a></li>
+        <li data-role-restricted><a href="pricing.html">Pricing</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="content.html" aria-current="page">Content</a></li>
+        <li data-role-restricted><a href="users.html">Admin Users</a></li>
+        <li data-role-restricted><a href="settings.html">Settings</a></li>
+      </ul>
+    </aside>
+
+    <div class="admin-main">
+      <div class="admin-header">
+        <div>
+          <h1>Destinations Content</h1>
+          <p>Simple list/add/edit — intentionally not a full CMS (design-spec.md Section 3.8).</p>
+        </div>
+      </div>
+
+      <div class="admin-panel">
+        <h2 id="form-heading">Add a guide</h2>
+        <form id="content-form" class="form-grid">
+          <input type="hidden" id="dest-id" name="id" />
+          <div class="form-row form-row--2">
+            <div class="field">
+              <label for="dest-title">Title</label>
+              <input type="text" id="dest-title" name="title" required />
+            </div>
+            <div class="field">
+              <label for="dest-slug">Slug</label>
+              <input type="text" id="dest-slug" name="slug" placeholder="volcanoes-national-park" required />
+            </div>
+          </div>
+          <div class="field">
+            <label for="dest-thumb">Thumbnail image URL</label>
+            <input type="url" id="dest-thumb" name="thumbnail_url" required />
+          </div>
+          <div class="field">
+            <label for="dest-hero">Hero image URL</label>
+            <input type="url" id="dest-hero" name="hero_image_url" required />
+          </div>
+          <div class="field">
+            <label for="dest-excerpt">Excerpt</label>
+            <input type="text" id="dest-excerpt" name="excerpt" required />
+          </div>
+          <div class="field">
+            <label for="dest-body">Body (HTML)</label>
+            <textarea id="dest-body" name="body_html" rows="6"></textarea>
+          </div>
+          <div class="form-row form-row--2">
+            <div class="field">
+              <label for="dest-category">Suggested category id</label>
+              <input type="text" id="dest-category" name="suggested_category_id" placeholder="cat_offroad" />
+            </div>
+            <div class="field">
+              <label for="dest-status">Status</label>
+              <select id="dest-status" name="status">
+                <option value="draft">Draft</option>
+                <option value="published">Published</option>
+              </select>
+            </div>
+          </div>
+          <div style="display:flex;gap:var(--space-3);">
+            <button type="submit" class="btn btn-primary">Save guide</button>
+            <button type="button" class="btn btn-ghost" id="clear-form-btn">Clear form</button>
+          </div>
+          <p id="content-result" role="status"></p>
+        </form>
+      </div>
+
+      <div class="admin-panel">
+        <h2>All guides</h2>
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead><tr><th scope="col">Title</th><th scope="col">Slug</th><th scope="col">Status</th><th scope="col"></th></tr></thead>
+            <tbody id="content-table-body"><tr><td colspan="4">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/data/mock-data.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/format.js"></script>
+  <script src="../js/components/toast.js"></script>
+  <script src="../js/components/admin-shell.js"></script>
+  <script src="../js/pages/admin-content.js"></script>
+</body>
+</html>

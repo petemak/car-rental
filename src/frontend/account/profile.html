@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Profile | Rwanda Roadways</title>
+  <meta name="description" content="Update your saved contact and license details for faster future checkout." />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container site-header__bar">
+      <a class="site-header__logo" href="../index.html">Rwanda <span>Roadways</span></a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a href="../fleet.html">Fleet</a></li>
+          <li><a href="bookings.html">My Bookings</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__actions">
+        <a class="btn btn-primary btn-sm" href="../fleet.html">Book Now</a>
+        <button type="button" class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav">
+          <span class="visually-hidden">Menu</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav id="mobile-nav" class="mobile-nav" data-mobile-nav aria-label="Mobile">
+      <ul class="mobile-nav__list">
+        <li><a href="../fleet.html">Fleet</a></li>
+        <li><a href="bookings.html">My Bookings</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <div class="container section" style="max-width:40rem;">
+      <h1>My Profile</h1>
+      <p>Save your details once for faster checkout next time.</p>
+
+      <div id="auth-required" hidden class="alert alert--info">
+        You're not logged in. <a href="login.html">Log in</a> to view and edit your profile.
+      </div>
+
+      <form id="profile-form" class="form-grid" hidden>
+        <div class="form-row form-row--2">
+          <div class="field">
+            <label for="first-name">First name</label>
+            <input type="text" id="first-name" name="first_name" required />
+          </div>
+          <div class="field">
+            <label for="last-name">Last name</label>
+            <input type="text" id="last-name" name="last_name" required />
+          </div>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" disabled />
+          <p class="hint">Contact support to change your login email.</p>
+        </div>
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" />
+        </div>
+        <div class="field">
+          <label for="country">Country of residence</label>
+          <input type="text" id="country" name="country" />
+        </div>
+        <div class="form-row form-row--2">
+          <div class="field">
+            <label for="license-number">Driver's license / IDP number</label>
+            <input type="text" id="license-number" name="license_number" />
+          </div>
+          <div class="field">
+            <label for="license-expiry">License expiry</label>
+            <input type="date" id="license-expiry" name="license_expiry" />
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+        <p id="profile-result" role="status"></p>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Rwanda Roadways. All rights reserved.</p>
+      <ul class="footer-bottom__legal">
+        <li><a href="../legal/terms.html">Terms of Service</a></li>
+        <li><a href="../legal/privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/data/mock-data.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/format.js"></script>
+  <script src="../js/components/toast.js"></script>
+  <script src="../js/components/nav.js"></script>
+  <script src="../js/pages/account-profile.js"></script>
+</body>
+</html>

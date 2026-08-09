@@ -1,0 +1,39 @@
+{:paths ["src" "resources"]
+
+ :deps {org.clojure/clojure {:mvn/version "1.12.0"}
+
+        ;; HTTP / routing
+        ring/ring-core {:mvn/version "1.13.0"}
+        ring/ring-jetty-adapter {:mvn/version "1.13.0"}
+        metosin/reitit {:mvn/version "0.7.2"}
+        metosin/muuntaja {:mvn/version "0.6.10"}
+
+        ;; validation
+        metosin/malli {:mvn/version "0.16.4"}
+
+        ;; component lifecycle
+        com.stuartsierra/component {:mvn/version "1.1.0"}
+
+        ;; configuration
+        aero/aero {:mvn/version "1.1.6"}
+
+        ;; persistence plumbing (kept for future real-DB swap; the store
+        ;; component itself is in-memory for this build, see README note in
+        ;; car_rental.backend.components.store)
+        com.github.seancorfield/next.jdbc {:mvn/version "1.3.955"}
+        hikari-cp/hikari-cp {:mvn/version "3.0.1"}
+        org.xerial/sqlite-jdbc {:mvn/version "3.46.1.3"}
+
+        ;; auth
+        buddy/buddy-sign {:mvn/version "3.6.1-359"}
+        buddy/buddy-hashers {:mvn/version "2.0.167"}}
+
+ :aliases
+ {:run {:main-opts ["-m" "car-rental.backend.main"]}
+
+  :test {:extra-paths ["test"]
+         :extra-deps {org.clojure/test.check {:mvn/version "1.1.1"}}
+         :main-opts ["-m" "car-rental.backend.test-runner"]}
+
+  :lint {:extra-deps {clj-kondo/clj-kondo {:mvn/version "2025.06.05"}}
+         :main-opts ["-m" "clj-kondo.main"]}}}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bookings Management | Rwanda Roadways Admin</title>
+  <meta name="description" content="View and manage all customer bookings." />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/admin.css" />
+</head>
+<body class="admin-body">
+  <div class="admin-topbar">
+    <button type="button" class="nav-toggle" id="sidebar-toggle" aria-label="Toggle menu" style="border-color:rgba(255,255,255,.5);">☰</button>
+    <a class="admin-topbar__brand" href="dashboard.html">Rwanda Roadways <span style="opacity:.7;font-weight:400;">Admin</span></a>
+    <div class="admin-topbar__user">
+      <span id="admin-user-name">Staff</span>
+      <button type="button" class="btn btn-outline-light btn-sm" id="admin-logout-btn">Log out</button>
+    </div>
+  </div>
+
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="admin-sidebar" aria-label="Admin navigation">
+      <ul class="admin-nav">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="fleet.html">Fleet</a></li>
+        <li><a href="bookings.html" aria-current="page">Bookings</a></li>
+        <li><a href="customers.html">Customers</a></li>
+        <li data-role-restricted><a href="pricing.html">Pricing</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="content.html">Content</a></li>
+        <li data-role-restricted><a href="users.html">Admin Users</a></li>
+        <li data-role-restricted><a href="settings.html">Settings</a></li>
+      </ul>
+    </aside>
+
+    <div class="admin-main">
+      <div class="admin-header">
+        <div>
+          <h1>Bookings</h1>
+          <p>All customer bookings — filter by status, date range, or vehicle.</p>
+        </div>
+      </div>
+
+      <div class="admin-toolbar">
+        <div class="admin-toolbar__filters">
+          <select id="filter-status">
+            <option value="">All statuses</option>
+            <option value="pending_payment">Pending Payment</option>
+            <option value="confirmed">Confirmed</option>
+            <option value="in_progress">In Progress</option>
+            <option value="completed">Completed</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+          <label class="visually-hidden" for="filter-date-from">From date</label>
+          <input type="date" id="filter-date-from" />
+          <label class="visually-hidden" for="filter-date-to">To date</label>
+          <input type="date" id="filter-date-to" />
+          <button type="button" class="btn btn-outline btn-sm" id="apply-filters">Apply</button>
+        </div>
+      </div>
+
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <caption class="visually-hidden">Bookings</caption>
+          <thead>
+            <tr><th scope="col">Reference</th><th scope="col">Customer</th><th scope="col">Vehicle</th><th scope="col">Pickup</th><th scope="col">Return</th><th scope="col">Status</th><th scope="col">Total</th><th scope="col"></th></tr>
+          </thead>
+          <tbody id="bookings-table-body">
+            <tr><td colspan="8">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ul class="pagination" id="bookings-pagination"></ul>
+    </div>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/data/mock-data.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/format.js"></script>
+  <script src="../js/components/toast.js"></script>
+  <script src="../js/components/admin-shell.js"></script>
+  <script src="../js/pages/admin-bookings.js"></script>
+</body>
+</html>

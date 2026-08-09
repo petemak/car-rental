@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="page-title">Vehicle Details | Rwanda Roadways</title>
+  <meta name="description" content="Photos, specs, policies and live pricing for this vehicle — inspected and cleaned before every trip." />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container site-header__bar">
+      <a class="site-header__logo" href="index.html">Rwanda <span>Roadways</span></a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a href="fleet.html" aria-current="page">Fleet</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__actions">
+        <label class="visually-hidden" for="currency-select">Currency</label>
+        <select id="currency-select" class="currency-select" data-currency-select>
+          <option value="USD">USD $</option>
+          <option value="EUR">EUR €</option>
+          <option value="GBP">GBP £</option>
+          <option value="RWF">RWF</option>
+        </select>
+        <a class="account-link" href="account/login.html" data-account-link data-account-href-loggedin="account/bookings.html">Login</a>
+        <a class="btn btn-primary btn-sm" href="fleet.html">Book Now</a>
+        <button type="button" class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav">
+          <span class="visually-hidden">Menu</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav id="mobile-nav" class="mobile-nav" data-mobile-nav aria-label="Mobile">
+      <ul class="mobile-nav__list">
+        <li><a href="fleet.html">Fleet</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="account/login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <div class="container" style="padding-top:var(--space-5);">
+      <ol class="breadcrumbs">
+        <li><a href="index.html">Home</a></li>
+        <li>/</li>
+        <li><a href="fleet.html">Fleet</a></li>
+        <li>/</li>
+        <li id="breadcrumb-current">Vehicle</li>
+      </ol>
+    </div>
+
+    <div id="vehicle-loading" class="container" role="status">
+      <p>Loading vehicle…</p>
+    </div>
+
+    <div id="vehicle-error" class="container" hidden>
+      <p class="alert alert--error" id="vehicle-error-message">Couldn't load this vehicle.</p>
+      <a class="btn btn-outline" href="fleet.html">Back to Fleet</a>
+    </div>
+
+    <div id="vehicle-content" hidden>
+      <section class="container section--tight">
+        <div id="gallery" style="display:grid;grid-template-columns:1fr;gap:var(--space-2);">
+          <button type="button" id="gallery-main-btn" style="border:0;padding:0;background:none;cursor:pointer;">
+            <img id="gallery-main-image" src="" alt="" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--radius-md);" />
+          </button>
+          <div class="lightbox__thumbs" id="gallery-thumbs"></div>
+        </div>
+      </section>
+
+      <section class="container">
+        <div class="two-col">
+          <div>
+            <span class="badge" id="vehicle-category-badge"></span>
+            <h1 id="vehicle-name"></h1>
+            <p class="vehicle-card__trust">Inspected and cleaned before every trip</p>
+
+            <h2>Specifications</h2>
+            <dl class="definition-list" id="specs-list"></dl>
+
+            <h2>Features</h2>
+            <ul class="icon-list" id="features-list"></ul>
+
+            <h2>Policies</h2>
+            <p style="color:var(--color-text-muted);">Stated plainly, no surprises at pickup.</p>
+            <dl class="definition-list" id="policies-list"></dl>
+
+            <h2>Reviews for this vehicle</h2>
+            <div class="grid grid--3" id="vehicle-reviews" aria-live="polite"></div>
+
+            <h2>Similar vehicles</h2>
+            <div class="grid grid--3" id="similar-vehicles" aria-live="polite"></div>
+
+            <h2>Common questions</h2>
+            <div class="accordion" id="vehicle-faq"></div>
+          </div>
+
+          <aside>
+            <form class="price-panel" id="booking-widget" aria-label="Book this vehicle">
+              <h2 id="widget-price"></h2>
+              <div class="field">
+                <label for="wd-pickup-date">Pickup date</label>
+                <input type="date" id="wd-pickup-date" name="pickup_date" required />
+              </div>
+              <div class="field">
+                <label for="wd-return-date">Return date</label>
+                <input type="date" id="wd-return-date" name="return_date" required />
+              </div>
+              <fieldset style="border:0;padding:0;margin:0 0 var(--space-3);">
+                <legend class="hint" style="padding-bottom:var(--space-2);">Service type</legend>
+                <div class="field-toggle-group" role="radiogroup">
+                  <input type="radio" id="wd-svc-self" name="service_type" value="self_drive" checked />
+                  <label for="wd-svc-self">Self-Drive</label>
+                  <input type="radio" id="wd-svc-chauffeur" name="service_type" value="chauffeur" />
+                  <label for="wd-svc-chauffeur">Chauffeur</label>
+                </div>
+              </fieldset>
+              <div class="field-inline">
+                <input type="checkbox" id="wd-airport-pickup" name="airport_pickup" />
+                <label for="wd-airport-pickup">Add airport pickup</label>
+              </div>
+              <div class="field-inline">
+                <input type="checkbox" id="wd-additional-driver" name="additional_driver" />
+                <label for="wd-additional-driver">Additional driver</label>
+              </div>
+              <div class="field-inline">
+                <input type="checkbox" id="wd-child-seat" name="child_seat" />
+                <label for="wd-child-seat">Child seat</label>
+              </div>
+
+              <div id="price-breakdown" aria-live="polite" style="margin-top:var(--space-4);">
+                <p class="price-panel__note">Choose your dates to see a live price.</p>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block" style="margin-top:var(--space-4);" id="continue-to-book">Continue to book</button>
+              <p class="price-panel__note">Prices are calculated by our server (<code>POST /pricing/quote</code>) — nothing here is computed in your browser.</p>
+            </form>
+          </aside>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="modal-backdrop" id="lightbox-modal" hidden>
+    <div class="modal modal--wide" role="dialog" aria-modal="true" aria-label="Vehicle photo gallery">
+      <button type="button" class="modal__close" data-modal-close aria-label="Close gallery">&times;</button>
+      <img class="lightbox__image" id="lightbox-image" src="" alt="" />
+      <div class="lightbox__thumbs" id="lightbox-thumbs"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h2>Rwanda Roadways</h2>
+        <p>Affordable premier car rental for tourists exploring Rwanda — self-drive or chauffeured, from Kigali International Airport to the trailhead.</p>
+        <form data-newsletter-form>
+          <label for="newsletter-email">Get trip tips &amp; offers</label>
+          <div class="phone-input">
+            <input type="email" id="newsletter-email" name="email" placeholder="you@example.com" required />
+            <button type="submit" class="btn btn-primary btn-sm">Subscribe</button>
+          </div>
+        </form>
+        <p class="footer-locality">Kigali, Rwanda</p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <ul>
+          <li><a href="fleet.html">Fleet</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="about.html">About / Our Standards</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Account</h2>
+        <ul>
+          <li><a href="account/login.html">Login / Register</a></li>
+          <li><a href="account/bookings.html">My Bookings</a></li>
+          <li><a href="contact.html">Contact Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="tel:+250788000000">+250 788 000 000</a></li>
+          <li><a href="https://wa.me/250788000000">WhatsApp us</a></li>
+          <li><a href="mailto:hello@rwandaroadways.com">hello@rwandaroadways.com</a></li>
+          <li>KN 4 Ave, Kigali, Rwanda</li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Rwanda Roadways. All rights reserved.</p>
+      <ul class="footer-bottom__legal">
+        <li><a href="legal/terms.html">Terms of Service</a></li>
+        <li><a href="legal/privacy.html">Privacy Policy</a></li>
+        <li><a href="legal/cancellation-policy.html">Cancellation &amp; Refund Policy</a></li>
+        <li><a href="legal/driver-requirements.html">Driver Requirements &amp; Insurance</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/data/mock-data.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/format.js"></script>
+  <script src="js/components/toast.js"></script>
+  <script src="js/components/modal.js"></script>
+  <script src="js/components/accordion.js"></script>
+  <script src="js/components/nav.js"></script>
+  <script src="js/components/vehicle-card.js"></script>
+  <script src="js/components/review-card.js"></script>
+  <script src="js/components/footer.js"></script>
+  <script src="js/pages/vehicle-detail.js"></script>
+</body>
+</html>
