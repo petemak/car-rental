@@ -1,0 +1,52 @@
+# Cloudflare Pages config — deployment config only, does not modify
+# application source under src/frontend/*.html, js/, or css/.
+#
+# STAGING deployment (Phase 1 of the deployment-engineer two-phase
+# process). Cloudflare Pages was chosen over Netlify for the static
+# frontend — see "Hosting research (2026-08-09)" below.
+#
+# Hosting research (2026-08-09), static-frontend options compared:
+#   - Cloudflare Pages free tier: $0/mo, genuinely unlimited bandwidth
+#     at every tier (including free), 1 concurrent build, 20,000 files /
+#     25MB per file limit (this site is a few dozen small HTML/CSS/JS
+#     files, nowhere near that). Every deploy (and every branch) gets
+#     its own free preview URL, distinct from the production URL, with
+#     no paid plan required.
+#   - Netlify free tier: $0/mo but capped at 100GB bandwidth/mo with
+#     expensive overages (~$55/100GB) and moved to credit-based billing
+#     in 2025/2026, making cost less predictable. Also offers free
+#     per-deploy previews. Functionally similar for a static site this
+#     small, but Cloudflare's uncapped bandwidth and flatter pricing win
+#     for a project that may see unpredictable staging/demo traffic.
+#   Decision: Cloudflare Pages, free plan, for both staging and (later)
+#   production. This also matches functions/_middleware.js already in
+#   this repo (src/frontend/functions/_middleware.js), which is a
+#   Cloudflare Pages Function — it injects the backend API origin into
+#   each HTML response at request time from a Pages environment
+#   variable, so no source file needs a hardcoded backend URL per
+#   environment.
+#
+# Setup required once, in the Cloudflare Pages dashboard, before first
+# deploy (Settings -> Environment variables), for BOTH the "Preview" and
+# "Production" environments:
+#   API_ORIGIN = https://<the-render-staging-service>.onrender.com
+# (Update this when the backend's Render URL is known after its own
+# first deploy — see render.yaml.)
+#
+# Deploy commands (run from repo root; requires `wrangler login` once,
+# or a CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID pair in the env):
+#   Staging/preview deploy (recommended for Phase 1):
+#     npx wrangler pages deploy src/frontend \
+#       --project-name=car-rental-frontend \
+#       --branch=staging
+#   This produces a preview URL of the form
+#   https://staging.car-rental-frontend.pages.dev (branch alias) and/or
+#   https://<deployment-id>.car-rental-frontend.pages.dev (per-deploy),
+#   both distinct from the production URL
+#   (https://car-rental-frontend.pages.dev, produced by deploying the
+#   configured production branch — do not use that command until Phase 2
+#   approval).
+
+name = "car-rental-frontend"
+pages_build_output_dir = "src/frontend"
+compatibility_date = "2026-08-09"
