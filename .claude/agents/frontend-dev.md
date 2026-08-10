@@ -20,3 +20,10 @@ Rules:
 - No inline styles; keep CSS in its own file(s)
 
 Report which files you created or changed when done.
+
+hooks:
+  PostToolUse:
+    - matcher: "Edit|Write"
+      hooks:
+        - type: command
+          command: "npx eslint src/frontend --max-warnings 0"
