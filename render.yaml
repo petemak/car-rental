@@ -37,13 +37,20 @@
 #   real customer traffic.
 #
 # IMPORTANT — read before/after first deploy:
-#   1. CORS_ORIGINS below is a placeholder ("*"). Once the frontend
-#      staging URL is known (Cloudflare Pages), narrow this to that
-#      origin, e.g. "https://car-rental-frontend.pages.dev". Pages
-#      preview deploys also get random per-deploy subdomains
-#      (<hash>.car-rental-frontend.pages.dev), so "*" is left in place
-#      for staging to avoid breaking preview testing; narrow this for
-#      production once the final frontend domain is fixed.
+#   1. CORS_ORIGINS is narrowed to the production frontend origin
+#      (https://car-rental-frontend-2th.pages.dev) now that it's live
+#      (2026-08-10). `wrap-cors` in routes.clj only echoes a single
+#      static origin string (no list/multi-origin support), so this is
+#      an application-code limitation, not a config choice: narrowing
+#      CORS here necessarily breaks browser-side API calls from the
+#      staging frontend (staging.car-rental-frontend-2th.pages.dev and
+#      per-deploy preview subdomains) against this same shared backend,
+#      since their Origin header no longer matches. Accepted here
+#      because staging's review already completed and was approved
+#      before this change — if staging needs to keep working against a
+#      live backend later, that requires either reverting to "*"
+#      temporarily or a real multi-origin fix in wrap-cors (app code,
+#      out of scope for this deployment-only change).
 #   2. DEV_PAYMENT_SIMULATION_ENABLED is deliberately set to the literal
 #      string "false". Read src/backend/src/car_rental/backend/handlers/
 #      payments.clj — the check is `(not= "false" ...)`, i.e. ANY value
@@ -58,8 +65,14 @@
 #      durable on this backend to begin with.
 #   5. Per qa-report.md, the seeded demo accounts (admin@example.com /
 #      admin123, staff@example.com / staff123, jane@example.com /
-#      password123) are fine for this staging review but must not ship
-#      to a real production deploy without being replaced/removed.
+#      password123) are still present. This service was promoted to
+#      Cloudflare Pages' production slot on 2026-08-10 but, per explicit
+#      owner decision, only as a demo/preview — not a real customer
+#      launch (no real payment integration exists, see
+#      DEV_PAYMENT_SIMULATION_ENABLED above, and the in-memory store
+#      still has no persistence, see note above). These credentials —
+#      and the demo payment simulation — must still be replaced/removed
+#      before this is treated as a real go-live.
 
 services:
   - type: web
@@ -77,6 +90,6 @@ services:
       - key: JWT_SECRET
         generateValue: true
       - key: CORS_ORIGINS
-        value: "*" # TODO: narrow to the deployed frontend origin once known
+        value: "https://car-rental-frontend-2th.pages.dev" # narrowed 2026-08-10, see note 1 above
       - key: DEV_PAYMENT_SIMULATION_ENABLED
         value: "false"
