@@ -45,3 +45,19 @@ Have them confirm they're both reading the same
 api-contract.md before either writes code. Wait for both
 to finish before proceeding.***
 
+
+## Final status
+```
+
+Production is live
+Frontend: https://car-rental-frontend-2th.pages.dev
+Backend: https://car-rental-backend-staging-074n.onrender.com (CORS now locked to the production origin)
+Everything's verified end-to-end. As agreed, this is scoped as a demo/preview, not a real customer launch:
+
+No real payment provider — checkout only works via the demo simulate-success endpoint.
+In-memory store — any restart/redeploy wipes all bookings/customers/reviews.
+Seeded demo accounts are still active (admin@example.com/admin123, etc.).
+All three are documented in render.yaml and qa-report.md's addendum as blockers to resolve before a real go-live.
+
+One side effect worth knowing: narrowing CORS to the production origin means staging can no longer call this backend from a browser (single-origin CORS limitation in the backend code) — staging's own review was already complete and approved, so this shouldn't matter unless you need staging live again later.
+```
