@@ -64,3 +64,62 @@ and authorized moving to deployment.
 - Seeded demo accounts (`admin@example.com` / `admin123`, `staff@example.com` /
   `staff123`, `jane@example.com` / `password123`) are for local dev/demo only and must
   not be shipped as real credentials in a public deployment — replace/remove before go-live.
+
+## Post-sign-off fixes (staging deployment, 2026-08-10)
+
+Deploying the signed-off build to staging (Cloudflare Pages + Render, see render.yaml /
+wrangler.toml) surfaced defects that round 1/2 testing didn't catch, since they only
+appear under real hosting conditions or on visual inspection of the live site rather than
+functional/contract testing. Logged here for the record; none of these reopen a round-1/2
+finding.
+
+Deployment-config bugs (found and fixed before first successful deploy, not app code):
+- `src/backend/Dockerfile` — `COPY --from=deps /root/.gitlibs` failed the Docker build
+  unconditionally, since this project's deps.edn has no `:git/url` deps and tools.deps
+  never creates that directory. Fixed with `mkdir -p` before the COPY.
+- `wrangler.toml` — Cloudflare Pages dashboard-configured "Preview" environment variables
+  do not bind to Functions at runtime for this project (Direct Upload, no Git
+  integration) — only a local `wrangler.toml` `[vars]` table does. `API_ORIGIN` moved
+  there accordingly.
+
+Content/data bugs (backend seed data, `seed.clj`), not caught by round 1/2 since they're
+data-accuracy issues, not contract/behavior issues:
+- `{{BRAND_NAME}}` template placeholder was never substituted in two seed records
+  (`loc_city_office` location name, `business_name`) — shipped literally to the live API
+  response. Fixed to "Rwanda Roadways".
+- Every vehicle's and destination's `thumbnail_url`/`photos` pointed at non-resolving
+  `https://example.com/img/...` placeholder URLs. First replacement pass reused
+  Unsplash URLs verified only by HTTP status (200), not by looking at the image — this
+  shipped photos of the wrong make/model (e.g. a Ford Expedition for the Toyota Land
+  Cruiser Prado). Caught by the human reviewer on staging; corrected in a second pass
+  using images individually downloaded and visually confirmed (correct badge/model)
+  before handing off. Lesson: HTTP 200 confirms a URL resolves, not that its content is
+  correct.
+
+Frontend visual/CSS bugs, not caught by round 1/2 since that testing was functional
+(contract + user-flow), not a visual design review:
+- `css/components.css`'s shared `input, select, textarea` rule had no exclusion for
+  `type="radio"`/`type="checkbox"`, so every radio and checkbox site-wide rendered as a
+  full-width bordered box instead of a small circle/square. Scoped the rule and added a
+  dedicated radio/checkbox style.
+- Homepage hero heading/lede block used a bespoke `max-width: 720px` that didn't share
+  the page's standard `.container` edge, so it visually misaligned with the Hero Search
+  Widget below it; header brand wordmark was undersized relative to the hero heading.
+  Both fixed, scoped to the home page only.
+- Color palette (`brand-brief.md` Section 5, `css/tokens.css`) read as dated
+  ("green/sandbrown") despite the brief's stated blue-leaning intent; revised to a
+  genuinely blue-based palette, with follow-through contrast fixes on buttons/focus
+  rings the new accent color affected.
+- Fleet page `.filter-panel` was disproportionately large next to the results list;
+  spacing tightened and category/transmission options changed from one-per-line to a
+  wrapping row layout.
+- Reported: Fleet vehicle card images not uniformly sized (Corolla card a different
+  height than others). Investigated — `aspect-ratio`/`object-fit` rules were already
+  correctly in place in the deployed CSS; root cause not reproduced from source, most
+  likely a stale browser cache at review time. Flagged for a hard-refresh re-check
+  rather than a further code change.
+
+All of the above were fixed and re-verified live on staging
+(https://staging.car-rental-frontend-2th.pages.dev /
+https://car-rental-backend-staging-074n.onrender.com) and approved by the project owner
+on 2026-08-10. Production promotion (Phase 2) has not yet happened.
