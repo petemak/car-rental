@@ -12,7 +12,13 @@ WORKDIR /app
 # Copy only dependency-manifest first so this layer caches independently
 # of source changes.
 COPY deps.edn /app/deps.edn
-RUN clojure -P -M:run
+# `clojure -P` only creates /root/.gitlibs when deps.edn has :git/url
+# coordinates. This project's deps.edn currently uses :mvn/version only,
+# so that directory would never exist and the COPY below would fail the
+# build unconditionally. `mkdir -p` guarantees it exists (empty, if there
+# are no git deps; populated, if any are added later) so the COPY always
+# succeeds either way.
+RUN clojure -P -M:run && mkdir -p /root/.gitlibs
 
 FROM clojure:temurin-21-tools-deps-noble
 WORKDIR /app
