@@ -26,17 +26,30 @@
 #   variable, so no source file needs a hardcoded backend URL per
 #   environment.
 #
-# Setup required once, in the Cloudflare Pages dashboard, before first
-# deploy (Settings -> Environment variables), for BOTH the "Preview" and
-# "Production" environments:
-#   API_ORIGIN = https://<the-render-staging-service>.onrender.com
-# (Update this when the backend's Render URL is known after its own
-# first deploy — see render.yaml.)
+# API_ORIGIN setup — CORRECTION (2026-08-10): the dashboard's Settings ->
+# Environment variables UI does NOT bind to Functions at runtime for this
+# project, because this is a Direct Upload project (no Git integration —
+# `wrangler pages project list` shows Git Provider: No). That dashboard
+# page only feeds Cloudflare's own Git-triggered build pipeline. For
+# Direct Upload deploys (`wrangler pages deploy`, what this project
+# uses), the Functions runtime env is built from THIS file's [vars]
+# table instead, which Wrangler bundles into the deployment locally.
+# Verified by adding a temporary debug header to the Function and
+# confirming `env` only contained Cloudflare's built-ins
+# (ASSETS, CF_PAGES*) until API_ORIGIN was added here.
 #
-# Deploy commands (run from repo root; requires `wrangler login` once,
-# or a CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID pair in the env):
+# This is deploy-time config only — it's committed here because it's a
+# public backend URL, not a secret. Update the value when the backend's
+# Render URL changes (see render.yaml).
+#
+# Deploy commands (run from inside src/frontend/ — NOT the repo root:
+# Wrangler looks for a `functions/` directory relative to the current
+# working directory, not relative to the deployed directory argument, so
+# running from repo root with `wrangler pages deploy src/frontend`
+# silently skips the Functions bundle entirely):
+#   cd src/frontend
 #   Staging/preview deploy (recommended for Phase 1):
-#     npx wrangler pages deploy src/frontend \
+#     npx wrangler pages deploy . \
 #       --project-name=car-rental-frontend \
 #       --branch=staging
 #   This produces a preview URL of the form
@@ -50,3 +63,6 @@
 name = "car-rental-frontend"
 pages_build_output_dir = "src/frontend"
 compatibility_date = "2026-08-09"
+
+[vars]
+API_ORIGIN = "https://car-rental-backend-staging-074n.onrender.com"

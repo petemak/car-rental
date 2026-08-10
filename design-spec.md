@@ -2,9 +2,9 @@
 
 Companion to `scope-checklist.md` (what's in scope and why) and
 `api-contract.md` (exact endpoints for everything dynamic below). Built from
-`brand-brief.md`: palette (`#0E5C63` teal primary / `#C1592A` terracotta
-accent / `#F4EDE2` warm sand background / `#26302E` charcoal text),
-type pairing (Poppins or Sora for headings, Inter for body), and voice
+`brand-brief.md`: palette (`#1D4ED8` confident blue primary / `#F5A524`
+golden-amber accent / `#F7F9FC` cool neutral background / `#1E293B` charcoal
+text), type pairing (Poppins or Sora for headings, Inter for body), and voice
 (trustworthy, warm, capable, unpretentious-premium). `{{BRAND_NAME}}` is a
 placeholder token — swap when the business owner confirms a final name.
 

@@ -72,6 +72,19 @@
   white-space: nowrap;
 }
 
+/* Brand wordmark should read as a confident title once the header has
+   real room to breathe. The primary nav already appears at 900px, and at
+   900-1023px the bar (logo + 6 nav links + currency select + login +
+   Book Now) is already at capacity with the small logo — bumping the
+   logo size in that range pushes Book Now/currency off-screen. So the
+   larger size waits for 1024px, where there's enough slack to grow the
+   logo without crowding the rest of the header. */
+@media (min-width: 1024px) {
+  .site-header__logo {
+    font-size: var(--fs-xl);
+  }
+}
+
 .site-header__logo span {
   color: var(--color-secondary);
 }
@@ -185,12 +198,15 @@
 
 .site-footer {
   background: var(--color-charcoal);
-  color: #eee6d8;
+  /* Was a hardcoded warm off-white (#eee6d8) left over from the old sand
+     palette; a translucent white reads neutral/cool against the new
+     charcoal instead of clashing with it. */
+  color: rgba(255, 255, 255, 0.82);
   padding-block: var(--space-8) var(--space-6);
 }
 
 .site-footer a {
-  color: #eee6d8;
+  color: rgba(255, 255, 255, 0.82);
 }
 
 .site-footer h2 {
@@ -227,7 +243,7 @@
 
 .footer-locality {
   font-size: var(--fs-sm);
-  color: #b8b0a2;
+  color: rgba(255, 255, 255, 0.58);
   margin-top: var(--space-3);
 }
 
@@ -240,7 +256,7 @@
   gap: var(--space-3);
   justify-content: space-between;
   font-size: var(--fs-sm);
-  color: #b8b0a2;
+  color: rgba(255, 255, 255, 0.58);
 }
 
 .footer-bottom__legal {

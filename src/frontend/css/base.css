@@ -77,7 +77,10 @@ button {
 }
 
 :focus-visible {
-  outline: 3px solid var(--color-secondary);
+  /* --color-secondary (amber) is only ~2:1 against a white page background,
+     under the 3:1 WCAG 1.4.11 non-text-contrast minimum for focus
+     indicators — use the darker secondary-600 (~3.2:1) instead. */
+  outline: 3px solid var(--color-secondary-600);
   outline-offset: 2px;
 }
 

@@ -7,29 +7,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap");
 
 :root {
-  /* Brand colors — brand-brief.md Section 5 */
-  --color-primary: #0e5c63;        /* deep teal/blue — nav, primary actions */
-  --color-primary-600: #0a464c;    /* hover/active state */
-  --color-primary-100: #e3edee;    /* tint for subtle backgrounds */
-  --color-secondary: #c1592a;      /* terracotta — CTAs, accents */
-  --color-secondary-600: #a3491f;  /* hover/active state */
-  --color-secondary-100: #f7e6db;  /* tint */
-  --color-sand: #f4ede2;           /* warm neutral background */
+  /* Brand colors — brand-brief.md Section 5 (revised 2026-08-10: blue-based
+     palette, replacing the earlier teal/terracotta/sand scheme) */
+  --color-primary: #1d4ed8;        /* confident blue — nav, primary actions */
+  --color-primary-600: #1e3a8a;    /* deep navy — hover/active state */
+  --color-primary-100: #dbeafe;    /* soft sky-blue tint for subtle backgrounds */
+  --color-secondary: #f5a524;      /* golden amber — CTAs, accents */
+  --color-secondary-600: #d97706;  /* deeper amber hover/active state */
+  --color-secondary-100: #fef3c7;  /* pale gold tint */
+  --color-sand: #f7f9fc;           /* cool neutral background (formerly warm sand) */
   --color-surface: #ffffff;
-  --color-charcoal: #26302e;       /* body text */
-  --color-text-muted: #5a655f;
-  --color-border: #ddd2bf;
-  --color-border-strong: #b9ac95;
+  --color-charcoal: #1e293b;       /* cool charcoal — body text */
+  --color-text-muted: #64748b;
+  --color-border: #e2e8f0;
+  --color-border-strong: #cbd5e1;
 
   /* Semantic status colors */
-  --color-success: #1f7a4d;
-  --color-success-bg: #e6f4ec;
-  --color-error: #b3261e;
-  --color-error-bg: #fbe9e7;
-  --color-warning: #8a5a00;
-  --color-warning-bg: #fdf1dc;
-  --color-info: #0e5c63;
-  --color-info-bg: #e3edee;
+  --color-success: #15803d;
+  --color-success-bg: #dcfce7;
+  --color-error: #dc2626;
+  --color-error-bg: #fee2e2;
+  --color-warning: #b45309;
+  --color-warning-bg: #fffbeb;
+  --color-info: #1d4ed8;
+  --color-info-bg: #dbeafe;
 
   /* Typography — brand-brief.md Section 6 */
   --font-heading: "Poppins", "Sora", "Segoe UI", system-ui, sans-serif;
@@ -60,9 +61,11 @@
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 16px;
-  --shadow-sm: 0 1px 3px rgba(38, 48, 46, 0.1);
-  --shadow-md: 0 4px 16px rgba(38, 48, 46, 0.12);
-  --shadow-lg: 0 12px 32px rgba(38, 48, 46, 0.16);
+  /* rgb(30,41,59) = --color-charcoal; was rgb(38,48,46), the old warm
+     charcoal, left over from the previous palette. */
+  --shadow-sm: 0 1px 3px rgba(30, 41, 59, 0.1);
+  --shadow-md: 0 4px 16px rgba(30, 41, 59, 0.12);
+  --shadow-lg: 0 12px 32px rgba(30, 41, 59, 0.16);
 
   --header-height: 4.25rem;
 }

@@ -16,7 +16,7 @@
 
 (def locations
   {"loc_kgl_airport" {:id "loc_kgl_airport" :name "Kigali International Airport (KGL)" :type "airport" :address "Kanombe, Kigali"}
-   "loc_city_office" {:id "loc_city_office" :name "{{BRAND_NAME}} City Office" :type "city_office" :address "KN 4 Ave, Kigali"}})
+   "loc_city_office" {:id "loc_city_office" :name "Rwanda Roadways City Office" :type "city_office" :address "KN 4 Ave, Kigali"}})
 
 (def vehicles
   {"veh_101"
@@ -28,9 +28,9 @@
     :fuel_type "diesel"
     :price_per_day "180.00"
     :currency "USD"
-    :thumbnail_url "https://example.com/img/landcruiser-1.jpg"
-    :photos [{:id "ph_1" :url "https://example.com/img/lc-1.jpg"}
-             {:id "ph_2" :url "https://example.com/img/lc-2.jpg"}]
+    :thumbnail_url "https://images.unsplash.com/photo-1613859492095-85d9944f09f6?w=800&q=80"
+    :photos [{:id "ph_1" :url "https://images.unsplash.com/photo-1613859492095-85d9944f09f6?w=1200&q=80"}
+             {:id "ph_2" :url "https://images.unsplash.com/photo-1630826362226-a509049bcdbf?w=1200&q=80"}]
     :features ["4x4" "Air conditioning" "Bluetooth" "Roof rack"]
     :specs {:doors 5 :luggage_capacity_l 500 :air_conditioning true :off_road_capable true}
     :policies {:mileage_limit_km_per_day 250
@@ -57,9 +57,8 @@
     :fuel_type "petrol"
     :price_per_day "35.00"
     :currency "USD"
-    :thumbnail_url "https://example.com/img/aygo-1.jpg"
-    :photos [{:id "ph_3" :url "https://example.com/img/aygo-1.jpg"}
-             {:id "ph_4" :url "https://example.com/img/aygo-2.jpg"}]
+    :thumbnail_url "https://images.unsplash.com/photo-1604046938596-c6561689c9ee?w=800&q=80"
+    :photos [{:id "ph_3" :url "https://images.unsplash.com/photo-1604046938596-c6561689c9ee?w=1200&q=80"}]
     :features ["Air conditioning" "Bluetooth" "USB charging"]
     :specs {:doors 5 :luggage_capacity_l 168 :air_conditioning true :off_road_capable false}
     :policies {:mileage_limit_km_per_day 200
@@ -86,8 +85,9 @@
     :fuel_type "petrol"
     :price_per_day "55.00"
     :currency "USD"
-    :thumbnail_url "https://example.com/img/corolla-1.jpg"
-    :photos [{:id "ph_5" :url "https://example.com/img/corolla-1.jpg"}]
+    :thumbnail_url "https://images.unsplash.com/photo-1638618164682-12b986ec2a75?w=800&q=80"
+    :photos [{:id "ph_5" :url "https://images.unsplash.com/photo-1638618164682-12b986ec2a75?w=1200&q=80"}
+             {:id "ph_7" :url "https://images.unsplash.com/photo-1623869675781-80aa31012a5a?w=1200&q=80"}]
     :features ["Air conditioning" "Bluetooth" "Cruise control"]
     :specs {:doors 4 :luggage_capacity_l 470 :air_conditioning true :off_road_capable false}
     :policies {:mileage_limit_km_per_day 220
@@ -114,8 +114,9 @@
     :fuel_type "petrol"
     :price_per_day "90.00"
     :currency "USD"
-    :thumbnail_url "https://example.com/img/rav4-1.jpg"
-    :photos [{:id "ph_6" :url "https://example.com/img/rav4-1.jpg"}]
+    :thumbnail_url "https://images.unsplash.com/photo-1617469767053-d3b523a0b982?w=800&q=80"
+    :photos [{:id "ph_6" :url "https://images.unsplash.com/photo-1617469767053-d3b523a0b982?w=1200&q=80"}
+             {:id "ph_8" :url "https://images.unsplash.com/photo-1706509234538-9831b1b33d66?w=1200&q=80"}]
     :features ["4x4" "Air conditioning" "Bluetooth" "Roof rack"]
     :specs {:doors 5 :luggage_capacity_l 580 :air_conditioning true :off_road_capable true}
     :policies {:mileage_limit_km_per_day 240
@@ -216,8 +217,8 @@
   {"dest_1" {:id "dest_1"
              :title "Self-Driving to Volcanoes National Park"
              :slug "volcanoes-national-park"
-             :thumbnail_url "https://example.com/img/volcanoes-thumb.jpg"
-             :hero_image_url "https://example.com/img/volcanoes-hero.jpg"
+             :thumbnail_url "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=900&q=80"
+             :hero_image_url "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1600&q=80"
              :excerpt "What to expect on the drive north to gorilla trekking country."
              :body_html "<p>The drive from Kigali to Volcanoes National Park takes around two hours...</p>"
              :suggested_category_id "cat_offroad"
@@ -227,8 +228,8 @@
    "dest_2" {:id "dest_2"
              :title "Airport to Lake Kivu: What to Expect"
              :slug "airport-to-lake-kivu"
-             :thumbnail_url "https://example.com/img/kivu-thumb.jpg"
-             :hero_image_url "https://example.com/img/kivu-hero.jpg"
+             :thumbnail_url "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=900&q=80"
+             :hero_image_url "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1600&q=80"
              :excerpt "A scenic route worth the drive, with a few stops along the way."
              :body_html "<p>Lake Kivu is one of Rwanda's most rewarding road trips...</p>"
              :suggested_category_id "cat_suv"
@@ -238,8 +239,8 @@
    "dest_3" {:id "dest_3"
              :title "Exploring Nyungwe Forest by Road"
              :slug "nyungwe-forest"
-             :thumbnail_url "https://example.com/img/nyungwe-thumb.jpg"
-             :hero_image_url "https://example.com/img/nyungwe-hero.jpg"
+             :thumbnail_url "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=900&q=80"
+             :hero_image_url "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1600&q=80"
              :excerpt "Canopy walks, chimp tracking, and winding forest roads."
              :body_html "<p>Nyungwe Forest National Park rewards travelers willing to make the drive...</p>"
              :suggested_category_id "cat_offroad"
@@ -257,7 +258,7 @@
             :child_seat_fee "5.00"}})
 
 (def settings
-  {:business_name "{{BRAND_NAME}}"
+  {:business_name "Rwanda Roadways"
    :contact_email "hello@example.com"
    :contact_phone "+250 7xx xxx xxx"
    :whatsapp_number "+250 7xx xxx xxx"

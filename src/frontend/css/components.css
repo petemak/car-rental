@@ -24,13 +24,16 @@
 }
 
 .btn-primary {
+  /* --color-secondary is a golden amber; it does not meet AA contrast with
+     white text (~2:1), so button text uses the dark charcoal token instead
+     (~7.2:1 contrast) — see brand-brief.md Section 5. */
   background: var(--color-secondary);
-  color: #fff;
+  color: var(--color-charcoal);
 }
 
 .btn-primary:hover {
   background: var(--color-secondary-600);
-  color: #fff;
+  color: var(--color-charcoal);
 }
 
 .btn-outline {
@@ -92,8 +95,11 @@
 .hero {
   position: relative;
   color: #fff;
-  background: linear-gradient(180deg, rgba(14, 34, 34, 0.55), rgba(14, 34, 34, 0.75)),
-    linear-gradient(120deg, #0e5c63, #123f43);
+  /* Overlay tint follows brand-brief.md Section 5's hero note: navy
+     (--color-primary-600 family, rgb(30,58,138)) over a primary-blue
+     gradient, replacing the old dark-teal tint/gradient. */
+  background: linear-gradient(180deg, rgba(30, 58, 138, 0.55), rgba(30, 58, 138, 0.75)),
+    linear-gradient(120deg, #1d4ed8, #1e3a8a);
   background-size: cover;
   background-position: center;
   padding-block: var(--space-8) var(--space-6);
@@ -107,9 +113,27 @@
   color: #fff;
 }
 
+/* Home hero only (services.html reuses .hero/.hero__inner without a
+   search widget below it, so it keeps the rule above unchanged). On the
+   home page, .hero__inner sits above the Hero Search Widget, and both
+   need to share one left/right edge — so .hero__inner here drops the
+   bespoke 720px cap and instead uses the same .container geometry as the
+   search widget's wrapper. Line length for the heading is controlled on
+   the heading itself instead of the block, so it doesn't stretch edge to
+   edge on wide screens. */
+.hero--home .hero__inner {
+  max-width: none;
+}
+
+.hero--home h1 {
+  max-width: 22ch;
+}
+
 .hero p.hero__lede {
   font-size: var(--fs-md);
-  color: #f4ede2;
+  /* Was a hardcoded warm-sand hex left over from the old palette; swapped to
+     the new primary tint so hero lede copy reads blue-toned, not tan. */
+  color: var(--color-primary-100);
   max-width: 46ch;
 }
 
@@ -141,6 +165,31 @@
 
 .search-widget__toggle button {
   flex: 1;
+}
+
+/* The self-drive/chauffeur toggle uses a hidden radio + a button-styled
+   label (same pattern as .field-toggle-group below). Hide the native
+   control and drive the pill's selected look off :checked so the radio
+   never renders as a visible circle floating next to the button. */
+.search-widget__toggle input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.search-widget__toggle input:checked + label {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+.search-widget__toggle input:focus-visible + label {
+  /* --color-secondary-600 used instead of --color-secondary: the base
+     amber only reaches ~2:1 against white, short of the 3:1 WCAG 1.4.11
+     minimum for focus-indicator contrast. */
+  outline: 3px solid var(--color-secondary-600);
+  outline-offset: 2px;
 }
 
 .search-widget__grid {
@@ -228,6 +277,14 @@
 }
 
 .vehicle-card__media img {
+  /* Fixed aspect-ratio + object-fit: cover keeps every card's photo the
+     same rendered height regardless of the source image's native
+     dimensions (reviewer flagged the Toyota Corolla photo rendering at a
+     different height than the rest of the fleet grid). display: block is
+     set explicitly here (in addition to the sitewide img{display:block}
+     reset in base.css) so this still holds if that global rule ever
+     changes. */
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -248,7 +305,9 @@
 .vehicle-card__unavailable {
   position: absolute;
   inset: 0;
-  background: rgba(38, 48, 46, 0.6);
+  /* rgb(30,41,59) = --color-charcoal; was rgb(38,48,46), the old warm
+     charcoal. */
+  background: rgba(30, 41, 59, 0.6);
   color: #fff;
   display: flex;
   align-items: center;
@@ -415,18 +474,27 @@
 /* ---------- CTA banner ---------- */
 
 .cta-banner {
+  /* --color-secondary (amber) fails AA contrast with white text — use
+     charcoal instead. See brand-brief.md Section 5 contrast note. */
   background: var(--color-secondary);
-  color: #fff;
+  color: var(--color-charcoal);
   text-align: center;
   padding-block: var(--space-7);
 }
 
 .cta-banner h2 {
-  color: #fff;
+  color: var(--color-charcoal);
 }
 
 .cta-banner--teal {
+  /* Primary blue passes AA with white text, so this variant keeps white
+     text unlike the base amber .cta-banner above. */
   background: var(--color-primary);
+  color: #fff;
+}
+
+.cta-banner--teal h2 {
+  color: #fff;
 }
 
 /* ---------- Forms ---------- */
@@ -484,7 +552,7 @@
   border-color: var(--color-error);
 }
 
-input,
+input:not([type="radio"]):not([type="checkbox"]),
 select,
 textarea {
   font-family: var(--font-body);
@@ -500,6 +568,26 @@ textarea {
 textarea {
   resize: vertical;
   min-height: 6rem;
+}
+
+/* Radios/checkboxes are checkable controls, not text fields — they must
+   never inherit the text-field width/padding/border rule above (that is
+   what caused radios site-wide to render as full-width bordered boxes
+   instead of small circles). Give them a small, fixed, native-shaped size
+   with the brand color applied via accent-color, and stop them from being
+   crushed or stretched by flex/grid ancestors. */
+input[type="radio"],
+input[type="checkbox"] {
+  width: 1.15rem;
+  height: 1.15rem;
+  min-width: 1.15rem;
+  min-height: 1.15rem;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0;
+  border-radius: initial;
+  accent-color: var(--color-primary);
+  cursor: pointer;
 }
 
 .field-inline {
@@ -552,44 +640,72 @@ textarea {
 }
 
 .field-toggle-group input:focus-visible + label {
-  outline: 3px solid var(--color-secondary);
+  /* --color-secondary-600 used instead of --color-secondary: the base
+     amber only reaches ~2:1 against white, short of the 3:1 WCAG 1.4.11
+     minimum for focus-indicator contrast. */
+  outline: 3px solid var(--color-secondary-600);
   outline-offset: 2px;
 }
 
 /* ---------- Filter sidebar ---------- */
+/* Compacted per reviewer feedback ("Filters is large compared to other
+   sections") — tighter panel padding, tighter fieldset rhythm, a smaller
+   heading, and the Category/Transmission radio lists wrap inline instead
+   of stacking one-per-line. Tap targets are unchanged (inputs stay
+   1.15rem via the shared radio/checkbox rule above; labels keep enough
+   padding to stay comfortably tappable). */
 
 .filter-panel {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  padding: var(--space-5);
+  padding: var(--space-4);
+}
+
+.filter-panel h2 {
+  font-size: var(--fs-md);
+  margin-bottom: var(--space-3);
 }
 
 .filter-panel fieldset {
   border: 0;
   padding: 0;
-  margin: 0 0 var(--space-5);
+  margin: 0 0 var(--space-4);
+}
+
+.filter-panel fieldset:last-of-type {
+  margin-bottom: var(--space-3);
 }
 
 .filter-panel legend {
   font-family: var(--font-heading);
   font-weight: 600;
+  font-size: var(--fs-sm);
   padding: 0 0 var(--space-2);
 }
 
 .filter-panel .checkbox-list {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
+  flex-flow: row wrap;
+  gap: var(--space-2) var(--space-4);
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+/* Extras/Category lists with longer labels (e.g. "Airport pickup
+   available") still read fine wrapped; short lists (Category options,
+   Automatic/Manual/Any) pack multiple per row automatically since each
+   <li> only takes the width its content needs. */
+.filter-panel .checkbox-list li {
+  flex: 0 0 auto;
 }
 
 .filter-panel .checkbox-list label {
   display: flex;
   align-items: center;
   gap: var(--space-2);
+  padding-block: 0.15rem;
   font-weight: 400;
   font-size: var(--fs-sm);
 }
@@ -786,7 +902,9 @@ textarea {
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(20, 24, 22, 0.7);
+  /* rgb(30,41,59) = --color-charcoal; was rgb(20,24,22), a warm near-black
+     left over from the old palette. */
+  background: rgba(30, 41, 59, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -966,7 +1084,10 @@ textarea {
 /* ---------- Misc ---------- */
 
 .skeleton {
-  background: linear-gradient(90deg, var(--color-border) 25%, #eee4d3 37%, var(--color-border) 63%);
+  /* Shimmer highlight was a hardcoded warm tan (#eee4d3) left over from the
+     old sand palette; swapped to a cool grey-blue so it matches the new
+     --color-border family instead of clashing against it. */
+  background: linear-gradient(90deg, var(--color-border) 25%, #f1f5f9 37%, var(--color-border) 63%);
   background-size: 400% 100%;
   animation: skeleton-loading 1.4s ease infinite;
   border-radius: var(--radius-sm);
