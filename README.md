@@ -1,10 +1,10 @@
-# Website Builder
+# Car Rental using Agent Teams
 
 ## Introduction
 
-This projects is walk through a the process of creating a multi-agent team in Claude that taked a single request like "Build me a site for a coffee rostery" and it turns it into a branding, design, a working front-end and back-end. The outcome is a real deployment that customers can use.
+This projects is walk through a the process of creating a multi-agent team in Claude that taked a single request like "Build me a site for managing a fleet of cars for rental" and it turns it into a branding, design, a working front-end and back-end. The outcome is a real deployment that customers can use.
 
-NOTE: equires a Claude Pro subscription to use the multi-agent feature
+NOTE: requires a Claude Pro subscription to use the multi-agent feature
 
 ## Learning Process
 To lern how this works, you can ask Claide to generate a step-by-step tutorial. Example prompt for asking Claude to generate a tutorial for that:
